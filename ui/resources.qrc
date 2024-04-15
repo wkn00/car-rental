@@ -1,0 +1,11 @@
+<RCC>
+  <qresource>
+    <file>icons/car-logo-small.png</file>
+    <file>icons/car-rental.png</file>
+    <file>icons/car3.png</file>
+    <file>icons/assignment.png</file>
+    <file>icons/setting.png</file>
+    <file>icons/customer.png</file>
+    <file>icons/search.png</file>
+  </qresource>
+</RCC>
