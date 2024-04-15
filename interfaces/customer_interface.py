@@ -30,7 +30,7 @@ class CustomerInterface:
     def displayCustomersPage(self):
         # Set the current index of pages_stack to 0 (car_page)
         self.main_window.pages_stack.setCurrentIndex(1)
-        self.main_window.page_name_label.setText("Car Rental - Customers")
+        self.main_window.page_name_label.setText("Car Rental - Customers Page")
 
     def handleCarRadioToggle(self, button, checked):
         # This function will be called whenever any radio button's checked state changes

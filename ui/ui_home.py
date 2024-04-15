@@ -16,9 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
-    QHeaderView, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QRadioButton, QSizePolicy, QStackedWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+    QHeaderView, QLabel, QLineEdit, QListWidget,
+    QListWidgetItem, QMainWindow, QPushButton, QRadioButton,
+    QSizePolicy, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 import ui.resources_rc
 
 class Ui_MainWindow(object):
@@ -1216,11 +1217,144 @@ class Ui_MainWindow(object):
         self.label_27.setObjectName(u"label_27")
         self.label_27.setGeometry(QRect(20, 320, 111, 41))
         self.pages_stack.addWidget(self.rentals_page)
+        self.search_page = QWidget()
+        self.search_page.setObjectName(u"search_page")
+        self.frame_19 = QFrame(self.search_page)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setGeometry(QRect(-10, -10, 941, 691))
+        self.frame_19.setStyleSheet(u"background-color: rgb(212, 212, 212);")
+        self.frame_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+        self.frame_20 = QFrame(self.frame_19)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setGeometry(QRect(670, 20, 241, 651))
+        self.frame_20.setStyleSheet(u"background-color: rgb(245, 245, 245);\n"
+"border-radius: 7px;")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.frame_21 = QFrame(self.frame_20)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setGeometry(QRect(20, 70, 201, 171))
+        self.frame_21.setStyleSheet(u"QFrame{\n"
+"font: 600 10pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+"}\n"
+"\n"
+"QLineEdit{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"border-radius:10px;\n"
+"color: rgb(0, 10, 52);\n"
+"}")
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_10 = QVBoxLayout(self.frame_21)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.label_25 = QLabel(self.frame_21)
+        self.label_25.setObjectName(u"label_25")
+
+        self.verticalLayout_10.addWidget(self.label_25)
+
+        self.searchCar = QLineEdit(self.frame_21)
+        self.searchCar.setObjectName(u"searchCar")
+
+        self.verticalLayout_10.addWidget(self.searchCar)
+
+        self.searchCarButton = QPushButton(self.frame_21)
+        self.searchCarButton.setObjectName(u"searchCarButton")
+        sizePolicy.setHeightForWidth(self.searchCarButton.sizePolicy().hasHeightForWidth())
+        self.searchCarButton.setSizePolicy(sizePolicy)
+        self.searchCarButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.searchCarButton.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(95, 165, 247);\n"
+"font: 600 10pt \"Segoe UI Semibold\";\n"
+"margin-top:14px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(0, 162, 38);\n"
+"	border: 1px solid rgb(0, 162, 38);\n"
+"}")
+
+        self.verticalLayout_10.addWidget(self.searchCarButton)
+
+        self.label_29 = QLabel(self.frame_20)
+        self.label_29.setObjectName(u"label_29")
+        self.label_29.setGeometry(QRect(10, 10, 111, 41))
+        self.label_29.setStyleSheet(u"\n"
+"font: 600 11pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+"")
+        self.label_31 = QLabel(self.frame_20)
+        self.label_31.setObjectName(u"label_31")
+        self.label_31.setGeometry(QRect(20, 320, 111, 41))
+        self.label_31.setStyleSheet(u"\n"
+"font: 600 11pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+"")
+        self.frame_22 = QFrame(self.frame_20)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setGeometry(QRect(20, 380, 201, 171))
+        self.frame_22.setStyleSheet(u"QFrame{\n"
+"font: 600 10pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+"}\n"
+"\n"
+"QLineEdit{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"border-radius:10px;\n"
+"color: rgb(0, 10, 52);\n"
+"}")
+        self.frame_22.setFrameShape(QFrame.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.label_28 = QLabel(self.frame_22)
+        self.label_28.setObjectName(u"label_28")
+
+        self.verticalLayout_11.addWidget(self.label_28)
+
+        self.searchCustomer = QLineEdit(self.frame_22)
+        self.searchCustomer.setObjectName(u"searchCustomer")
+
+        self.verticalLayout_11.addWidget(self.searchCustomer)
+
+        self.searchCustomerButton = QPushButton(self.frame_22)
+        self.searchCustomerButton.setObjectName(u"searchCustomerButton")
+        sizePolicy.setHeightForWidth(self.searchCustomerButton.sizePolicy().hasHeightForWidth())
+        self.searchCustomerButton.setSizePolicy(sizePolicy)
+        self.searchCustomerButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.searchCustomerButton.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(95, 165, 247);\n"
+"font: 600 10pt \"Segoe UI Semibold\";\n"
+"margin-top:14px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(0, 162, 38);\n"
+"	border: 1px solid rgb(0, 162, 38);\n"
+"}")
+
+        self.verticalLayout_11.addWidget(self.searchCustomerButton)
+
+        self.carsList = QListWidget(self.frame_19)
+        self.carsList.setObjectName(u"carsList")
+        self.carsList.setGeometry(QRect(70, 90, 531, 181))
+        self.carsList.setStyleSheet(u"background-color: rgb(180, 180, 180);\n"
+"border-radius: 7px;\n"
+"font: 11pt \"Segoe UI\";")
+        self.customerList = QListWidget(self.frame_19)
+        self.customerList.setObjectName(u"customerList")
+        self.customerList.setGeometry(QRect(80, 400, 531, 181))
+        self.customerList.setStyleSheet(u"background-color: rgb(180, 180, 180);\n"
+"border-radius: 7px;")
+        self.pages_stack.addWidget(self.search_page)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.pages_stack.setCurrentIndex(2)
+        self.pages_stack.setCurrentIndex(3)
         self.car_action_stack.setCurrentIndex(1)
         self.customer_action_stack.setCurrentIndex(1)
 
@@ -1236,7 +1370,7 @@ class Ui_MainWindow(object):
         self.rentalMenu.setText(QCoreApplication.translate("MainWindow", u"Rentals", None))
         self.searchMenu.setText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.settingsMenu.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
-        self.page_name_label.setText(QCoreApplication.translate("MainWindow", u"Car Rental", None))
+        self.page_name_label.setText(QCoreApplication.translate("MainWindow", u"Car Rental - Cars Page", None))
         ___qtablewidgetitem = self.carTable.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"CarID", None));
         ___qtablewidgetitem1 = self.carTable.horizontalHeaderItem(1)
@@ -1296,5 +1430,11 @@ class Ui_MainWindow(object):
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Rental ID", None))
         self.rentalEndButton.setText(QCoreApplication.translate("MainWindow", u"Unassign Car", None))
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"End Rental", None))
+        self.label_25.setText(QCoreApplication.translate("MainWindow", u"Car Registeration Number", None))
+        self.searchCarButton.setText(QCoreApplication.translate("MainWindow", u"Search Car", None))
+        self.label_29.setText(QCoreApplication.translate("MainWindow", u"Search car", None))
+        self.label_31.setText(QCoreApplication.translate("MainWindow", u"Search Customer", None))
+        self.label_28.setText(QCoreApplication.translate("MainWindow", u"Customer Mobile Number", None))
+        self.searchCustomerButton.setText(QCoreApplication.translate("MainWindow", u"Search Car", None))
     # retranslateUi
 
