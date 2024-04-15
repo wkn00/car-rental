@@ -7,7 +7,7 @@ class DatabaseAccess:
         self.initialize_database_customers()
 
     def initialize_database_cars(self):
-        self.connection_car = sqlite3.connect("cars01.db")
+        self.connection_car = sqlite3.connect("cars.db")
         self.cursor_car = self.connection_car.cursor()
 
         self.cursor_car.execute("DROP TABLE IF EXISTS cars")
@@ -16,14 +16,13 @@ class DatabaseAccess:
                 id INTEGER PRIMARY KEY,
                 car_reg TEXT,
                 car_make TEXT,
-                car_year TEXT,
-                car_color TEXT
+                car_year TEXT
             )""")
         self.connection_car.commit()
 
-    def add_car(self, car_registration_number, car_make, car_year, car_color):
-        self.cursor_car.execute("INSERT INTO cars (car_reg, car_make, car_year, car_color) VALUES (?, ?, ?, ?)",
-                                (car_registration_number, car_make, car_year, car_color))
+    def add_car(self, car_reg, car_make, car_year):
+        self.cursor_car.execute("INSERT INTO cars (car_reg, car_make, car_year) VALUES (?, ?, ?)",
+                                (car_reg, car_make, car_year))
         self.connection_car.commit()
 
     def get_all_cars(self):
@@ -39,15 +38,14 @@ class DatabaseAccess:
             CREATE TABLE customers (
                 id INTEGER PRIMARY KEY,
                 customer_name TEXT,
-                customer_contact_number TEXT,
-                customer_email TEXT,
-                customer_address TEXT
+                customer_number TEXT,
+                customer_email TEXT
             )""")
         self.connection_customer.commit()
 
-    def add_customer(self, customer_name, customer_contact_number, customer_email, customer_address):
-        self.cursor_customer.execute("INSERT INTO customers (customer_name, customer_contact_number, customer_email, customer_address) VALUES (?, ?, ?, ?)",
-                                     (customer_name, customer_contact_number, customer_email, customer_address))
+    def add_customer(self, customer_name, customer_number, customer_email):
+        self.cursor_customer.execute("INSERT INTO customers (customer_name, customer_number, customer_email) VALUES (?, ?, ?)",
+                                     (customer_name, customer_number, customer_email))
         self.connection_customer.commit()
 
     def get_all_customers(self):

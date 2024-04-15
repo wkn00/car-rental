@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHeaderView,
-    QLabel, QLineEdit, QMainWindow, QPushButton,
-    QRadioButton, QSizePolicy, QStackedWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QRadioButton, QSizePolicy, QStackedWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 import ui.resources_rc
 
 class Ui_MainWindow(object):
@@ -184,14 +184,14 @@ class Ui_MainWindow(object):
         icon1.addFile(u":/icons/customer.png", QSize(), QIcon.Normal, QIcon.Off)
         self.customersMenu.setIcon(icon1)
         self.customersMenu.setIconSize(QSize(30, 30))
-        self.assignMenu = QRadioButton(self.icon_widget)
-        self.assignMenu.setObjectName(u"assignMenu")
-        self.assignMenu.setGeometry(QRect(30, 310, 150, 45))
-        self.assignMenu.setCursor(QCursor(Qt.PointingHandCursor))
+        self.rentalMenu = QRadioButton(self.icon_widget)
+        self.rentalMenu.setObjectName(u"rentalMenu")
+        self.rentalMenu.setGeometry(QRect(30, 310, 150, 45))
+        self.rentalMenu.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
         icon2.addFile(u":/icons/assignment.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.assignMenu.setIcon(icon2)
-        self.assignMenu.setIconSize(QSize(22, 22))
+        self.rentalMenu.setIcon(icon2)
+        self.rentalMenu.setIconSize(QSize(22, 22))
         self.searchMenu = QRadioButton(self.icon_widget)
         self.searchMenu.setObjectName(u"searchMenu")
         self.searchMenu.setGeometry(QRect(30, 380, 150, 45))
@@ -265,8 +265,8 @@ class Ui_MainWindow(object):
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.carTable = QTableWidget(self.frame_8)
-        if (self.carTable.columnCount() < 5):
-            self.carTable.setColumnCount(5)
+        if (self.carTable.columnCount() < 4):
+            self.carTable.setColumnCount(4)
         __qtablewidgetitem = QTableWidgetItem()
         self.carTable.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -275,13 +275,11 @@ class Ui_MainWindow(object):
         self.carTable.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.carTable.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.carTable.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.carTable.setObjectName(u"carTable")
         self.carTable.setGeometry(QRect(20, 10, 641, 651))
         font1 = QFont()
         font1.setFamilies([u"Segoe UI"])
-        font1.setPointSize(7)
+        font1.setPointSize(9)
         font1.setBold(False)
         font1.setItalic(False)
         self.carTable.setFont(font1)
@@ -294,7 +292,7 @@ class Ui_MainWindow(object):
 "QTableWidget{\n"
 "	background-color: rgb(232, 232, 232);\n"
 "	\n"
-"	font: 7pt \"Segoe UI\";\n"
+"	font: 9pt \"Segoe UI\";\n"
 "	color: rgb(0, 10, 52);\n"
 "\n"
 "}\n"
@@ -317,6 +315,8 @@ class Ui_MainWindow(object):
 "  background: lightgray;\n"
 "color: rgb(0, 10, 52);\n"
 " }")
+        self.carTable.horizontalHeader().setDefaultSectionSize(155)
+        self.carTable.horizontalHeader().setStretchLastSection(True)
         self.frame_5 = QFrame(self.frame_8)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setGeometry(QRect(670, 10, 241, 651))
@@ -326,7 +326,7 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.car_action_stack = QStackedWidget(self.frame_5)
         self.car_action_stack.setObjectName(u"car_action_stack")
-        self.car_action_stack.setGeometry(QRect(20, 180, 193, 421))
+        self.car_action_stack.setGeometry(QRect(20, 180, 193, 451))
         self.car_empty = QWidget()
         self.car_empty.setObjectName(u"car_empty")
         self.car_action_stack.addWidget(self.car_empty)
@@ -334,7 +334,7 @@ class Ui_MainWindow(object):
         self.add_car.setObjectName(u"add_car")
         self.frame_3 = QFrame(self.add_car)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setGeometry(QRect(0, 10, 191, 411))
+        self.frame_3.setGeometry(QRect(0, 10, 191, 311))
         self.frame_3.setStyleSheet(u"QFrame{\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(0, 10, 52);\n"
@@ -361,40 +361,30 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_2)
 
-        self.registrationNumber = QLineEdit(self.frame_3)
-        self.registrationNumber.setObjectName(u"registrationNumber")
+        self.carRegNumber = QLineEdit(self.frame_3)
+        self.carRegNumber.setObjectName(u"carRegNumber")
 
-        self.verticalLayout.addWidget(self.registrationNumber)
+        self.verticalLayout.addWidget(self.carRegNumber)
 
         self.label_5 = QLabel(self.frame_3)
         self.label_5.setObjectName(u"label_5")
 
         self.verticalLayout.addWidget(self.label_5)
 
-        self.make = QLineEdit(self.frame_3)
-        self.make.setObjectName(u"make")
+        self.carMake = QLineEdit(self.frame_3)
+        self.carMake.setObjectName(u"carMake")
 
-        self.verticalLayout.addWidget(self.make)
+        self.verticalLayout.addWidget(self.carMake)
 
         self.label_6 = QLabel(self.frame_3)
         self.label_6.setObjectName(u"label_6")
 
         self.verticalLayout.addWidget(self.label_6)
 
-        self.year = QLineEdit(self.frame_3)
-        self.year.setObjectName(u"year")
+        self.carYear = QLineEdit(self.frame_3)
+        self.carYear.setObjectName(u"carYear")
 
-        self.verticalLayout.addWidget(self.year)
-
-        self.label_4 = QLabel(self.frame_3)
-        self.label_4.setObjectName(u"label_4")
-
-        self.verticalLayout.addWidget(self.label_4)
-
-        self.color = QLineEdit(self.frame_3)
-        self.color.setObjectName(u"color")
-
-        self.verticalLayout.addWidget(self.color)
+        self.verticalLayout.addWidget(self.carYear)
 
         self.carAddButton = QPushButton(self.frame_3)
         self.carAddButton.setObjectName(u"carAddButton")
@@ -411,9 +401,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgb(0, 10, 52);\n"
-"	color: rgb(95, 165, 247);\n"
-"	border-color: rgb(95, 165, 247);\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(0, 162, 38);\n"
+"	border: 1px solid rgb(0, 162, 38);\n"
 "}")
 
         self.verticalLayout.addWidget(self.carAddButton)
@@ -428,7 +418,7 @@ class Ui_MainWindow(object):
 "}")
         self.frame_6 = QFrame(self.edit_car)
         self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setGeometry(QRect(0, 10, 191, 411))
+        self.frame_6.setGeometry(QRect(0, 10, 191, 391))
         self.frame_6.setStyleSheet(u"QFrame{\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(0, 10, 52);\n"
@@ -458,10 +448,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_10)
 
-        self.carID_new = QLineEdit(self.frame_6)
-        self.carID_new.setObjectName(u"carID_new")
+        self.carEditCarID = QLineEdit(self.frame_6)
+        self.carEditCarID.setObjectName(u"carEditCarID")
 
-        self.verticalLayout_2.addWidget(self.carID_new)
+        self.verticalLayout_2.addWidget(self.carEditCarID)
 
         self.label_3 = QLabel(self.frame_6)
         self.label_3.setObjectName(u"label_3")
@@ -469,10 +459,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_3)
 
-        self.registrationNumber_new = QLineEdit(self.frame_6)
-        self.registrationNumber_new.setObjectName(u"registrationNumber_new")
+        self.carEditRegNumber = QLineEdit(self.frame_6)
+        self.carEditRegNumber.setObjectName(u"carEditRegNumber")
 
-        self.verticalLayout_2.addWidget(self.registrationNumber_new)
+        self.verticalLayout_2.addWidget(self.carEditRegNumber)
 
         self.label_7 = QLabel(self.frame_6)
         self.label_7.setObjectName(u"label_7")
@@ -480,30 +470,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_7)
 
-        self.make_new = QLineEdit(self.frame_6)
-        self.make_new.setObjectName(u"make_new")
+        self.carEditMake = QLineEdit(self.frame_6)
+        self.carEditMake.setObjectName(u"carEditMake")
 
-        self.verticalLayout_2.addWidget(self.make_new)
+        self.verticalLayout_2.addWidget(self.carEditMake)
 
         self.label_8 = QLabel(self.frame_6)
         self.label_8.setObjectName(u"label_8")
 
         self.verticalLayout_2.addWidget(self.label_8)
 
-        self.year_new = QLineEdit(self.frame_6)
-        self.year_new.setObjectName(u"year_new")
+        self.carEditYear = QLineEdit(self.frame_6)
+        self.carEditYear.setObjectName(u"carEditYear")
 
-        self.verticalLayout_2.addWidget(self.year_new)
-
-        self.label_9 = QLabel(self.frame_6)
-        self.label_9.setObjectName(u"label_9")
-
-        self.verticalLayout_2.addWidget(self.label_9)
-
-        self.color_new = QLineEdit(self.frame_6)
-        self.color_new.setObjectName(u"color_new")
-
-        self.verticalLayout_2.addWidget(self.color_new)
+        self.verticalLayout_2.addWidget(self.carEditYear)
 
         self.carEditButton = QPushButton(self.frame_6)
         self.carEditButton.setObjectName(u"carEditButton")
@@ -517,9 +497,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgb(0, 10, 52);\n"
-"	color: rgb(95, 165, 247);\n"
-"	border-color: rgb(95, 165, 247);\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(150, 150, 0);\n"
+"	border: 1px solid rgb(153, 153, 0);\n"
 "}")
 
         self.verticalLayout_2.addWidget(self.carEditButton)
@@ -553,10 +533,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.label_11)
 
-        self.carIDRemove = QLineEdit(self.frame_7)
-        self.carIDRemove.setObjectName(u"carIDRemove")
+        self.carRemoveCarID = QLineEdit(self.frame_7)
+        self.carRemoveCarID.setObjectName(u"carRemoveCarID")
 
-        self.verticalLayout_3.addWidget(self.carIDRemove)
+        self.verticalLayout_3.addWidget(self.carRemoveCarID)
 
         self.carRemoveButton = QPushButton(self.frame_7)
         self.carRemoveButton.setObjectName(u"carRemoveButton")
@@ -570,9 +550,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgb(0, 10, 52);\n"
-"	color: rgb(95, 165, 247);\n"
-"	border-color: rgb(95, 165, 247);\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(255, 0, 0);\n"
+"	border: 1px solid rgb(255, 0, 0);\n"
 "}")
 
         self.verticalLayout_3.addWidget(self.carRemoveButton)
@@ -690,28 +670,26 @@ class Ui_MainWindow(object):
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
         self.customerTable = QTableWidget(self.frame_9)
-        if (self.customerTable.columnCount() < 5):
-            self.customerTable.setColumnCount(5)
+        if (self.customerTable.columnCount() < 4):
+            self.customerTable.setColumnCount(4)
         font3 = QFont()
         font3.setPointSize(8)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        __qtablewidgetitem4.setFont(font3);
+        self.customerTable.setHorizontalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         __qtablewidgetitem5.setFont(font3);
-        self.customerTable.setHorizontalHeaderItem(0, __qtablewidgetitem5)
+        self.customerTable.setHorizontalHeaderItem(1, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         __qtablewidgetitem6.setFont(font3);
-        self.customerTable.setHorizontalHeaderItem(1, __qtablewidgetitem6)
+        self.customerTable.setHorizontalHeaderItem(2, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
         __qtablewidgetitem7.setFont(font3);
-        self.customerTable.setHorizontalHeaderItem(2, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        __qtablewidgetitem8.setFont(font3);
-        self.customerTable.setHorizontalHeaderItem(3, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        __qtablewidgetitem9.setFont(font3);
-        self.customerTable.setHorizontalHeaderItem(4, __qtablewidgetitem9)
+        self.customerTable.setHorizontalHeaderItem(3, __qtablewidgetitem7)
         self.customerTable.setObjectName(u"customerTable")
-        self.customerTable.setGeometry(QRect(20, 20, 631, 641))
-        self.customerTable.setFont(font2)
+        self.customerTable.setGeometry(QRect(20, 20, 641, 651))
+        self.customerTable.setFont(font1)
+        self.customerTable.setLayoutDirection(Qt.LeftToRight)
         self.customerTable.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(245, 245, 245);\n"
 "	border-radius: 7px;\n"
@@ -720,7 +698,7 @@ class Ui_MainWindow(object):
 "\n"
 "QTableWidget{\n"
 "	background-color: rgb(232, 232, 232);\n"
-"	\n"
+"	font: 9pt \"Segoe UI\";\n"
 "	color: rgb(0, 10, 52);\n"
 "\n"
 "}\n"
@@ -739,9 +717,12 @@ class Ui_MainWindow(object):
 "  background: lightgray;\n"
 "color: rgb(0, 10, 52);\n"
 " }")
+        self.customerTable.horizontalHeader().setDefaultSectionSize(155)
+        self.customerTable.horizontalHeader().setProperty("showSortIndicator", True)
+        self.customerTable.horizontalHeader().setStretchLastSection(True)
         self.frame_10 = QFrame(self.frame_9)
         self.frame_10.setObjectName(u"frame_10")
-        self.frame_10.setGeometry(QRect(660, 20, 241, 641))
+        self.frame_10.setGeometry(QRect(670, 20, 241, 651))
         self.frame_10.setStyleSheet(u"background-color: rgb(245, 245, 245);\n"
 "border-radius: 7px;")
         self.frame_10.setFrameShape(QFrame.StyledPanel)
@@ -749,14 +730,14 @@ class Ui_MainWindow(object):
         self.customer_action_stack = QStackedWidget(self.frame_10)
         self.customer_action_stack.setObjectName(u"customer_action_stack")
         self.customer_action_stack.setGeometry(QRect(20, 180, 193, 421))
-        self.car_empty_2 = QWidget()
-        self.car_empty_2.setObjectName(u"car_empty_2")
-        self.customer_action_stack.addWidget(self.car_empty_2)
-        self.add_car_2 = QWidget()
-        self.add_car_2.setObjectName(u"add_car_2")
-        self.frame_11 = QFrame(self.add_car_2)
+        self.customer_empty = QWidget()
+        self.customer_empty.setObjectName(u"customer_empty")
+        self.customer_action_stack.addWidget(self.customer_empty)
+        self.add_customer = QWidget()
+        self.add_customer.setObjectName(u"add_customer")
+        self.frame_11 = QFrame(self.add_customer)
         self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setGeometry(QRect(0, 10, 191, 411))
+        self.frame_11.setGeometry(QRect(0, 10, 191, 311))
         self.frame_11.setStyleSheet(u"QFrame{\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(0, 10, 52);\n"
@@ -776,40 +757,30 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addWidget(self.label_12)
 
-        self.RegistrationNumber_2 = QLineEdit(self.frame_11)
-        self.RegistrationNumber_2.setObjectName(u"RegistrationNumber_2")
+        self.customerName = QLineEdit(self.frame_11)
+        self.customerName.setObjectName(u"customerName")
 
-        self.verticalLayout_5.addWidget(self.RegistrationNumber_2)
+        self.verticalLayout_5.addWidget(self.customerName)
 
         self.label_13 = QLabel(self.frame_11)
         self.label_13.setObjectName(u"label_13")
 
         self.verticalLayout_5.addWidget(self.label_13)
 
-        self.Make_2 = QLineEdit(self.frame_11)
-        self.Make_2.setObjectName(u"Make_2")
+        self.customerNumber = QLineEdit(self.frame_11)
+        self.customerNumber.setObjectName(u"customerNumber")
 
-        self.verticalLayout_5.addWidget(self.Make_2)
+        self.verticalLayout_5.addWidget(self.customerNumber)
 
         self.label_14 = QLabel(self.frame_11)
         self.label_14.setObjectName(u"label_14")
 
         self.verticalLayout_5.addWidget(self.label_14)
 
-        self.Year_2 = QLineEdit(self.frame_11)
-        self.Year_2.setObjectName(u"Year_2")
+        self.customerEmail = QLineEdit(self.frame_11)
+        self.customerEmail.setObjectName(u"customerEmail")
 
-        self.verticalLayout_5.addWidget(self.Year_2)
-
-        self.label_15 = QLabel(self.frame_11)
-        self.label_15.setObjectName(u"label_15")
-
-        self.verticalLayout_5.addWidget(self.label_15)
-
-        self.Color_2 = QLineEdit(self.frame_11)
-        self.Color_2.setObjectName(u"Color_2")
-
-        self.verticalLayout_5.addWidget(self.Color_2)
+        self.verticalLayout_5.addWidget(self.customerEmail)
 
         self.customerAddButton = QPushButton(self.frame_11)
         self.customerAddButton.setObjectName(u"customerAddButton")
@@ -823,19 +794,19 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgb(0, 10, 52);\n"
-"	color: rgb(95, 165, 247);\n"
-"	border-color: rgb(95, 165, 247);\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(0, 162, 38);\n"
+"	border: 1px solid rgb(0, 162, 38);\n"
 "}")
 
         self.verticalLayout_5.addWidget(self.customerAddButton)
 
-        self.customer_action_stack.addWidget(self.add_car_2)
-        self.edit_car_2 = QWidget()
-        self.edit_car_2.setObjectName(u"edit_car_2")
-        self.frame_12 = QFrame(self.edit_car_2)
+        self.customer_action_stack.addWidget(self.add_customer)
+        self.edit_customer = QWidget()
+        self.edit_customer.setObjectName(u"edit_customer")
+        self.frame_12 = QFrame(self.edit_customer)
         self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setGeometry(QRect(0, 10, 191, 411))
+        self.frame_12.setGeometry(QRect(0, 10, 191, 391))
         self.frame_12.setStyleSheet(u"QFrame{\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(0, 10, 52);\n"
@@ -856,10 +827,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.label_16)
 
-        self.customerID_new = QLineEdit(self.frame_12)
-        self.customerID_new.setObjectName(u"customerID_new")
+        self.customerEditCustomerID = QLineEdit(self.frame_12)
+        self.customerEditCustomerID.setObjectName(u"customerEditCustomerID")
 
-        self.verticalLayout_6.addWidget(self.customerID_new)
+        self.verticalLayout_6.addWidget(self.customerEditCustomerID)
 
         self.label_17 = QLabel(self.frame_12)
         self.label_17.setObjectName(u"label_17")
@@ -867,10 +838,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.label_17)
 
-        self.name_new = QLineEdit(self.frame_12)
-        self.name_new.setObjectName(u"name_new")
+        self.customerEditName = QLineEdit(self.frame_12)
+        self.customerEditName.setObjectName(u"customerEditName")
 
-        self.verticalLayout_6.addWidget(self.name_new)
+        self.verticalLayout_6.addWidget(self.customerEditName)
 
         self.label_18 = QLabel(self.frame_12)
         self.label_18.setObjectName(u"label_18")
@@ -878,30 +849,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.label_18)
 
-        self.contactNumber_new = QLineEdit(self.frame_12)
-        self.contactNumber_new.setObjectName(u"contactNumber_new")
+        self.customerEditNumber = QLineEdit(self.frame_12)
+        self.customerEditNumber.setObjectName(u"customerEditNumber")
 
-        self.verticalLayout_6.addWidget(self.contactNumber_new)
+        self.verticalLayout_6.addWidget(self.customerEditNumber)
 
         self.label_19 = QLabel(self.frame_12)
         self.label_19.setObjectName(u"label_19")
 
         self.verticalLayout_6.addWidget(self.label_19)
 
-        self.email_new = QLineEdit(self.frame_12)
-        self.email_new.setObjectName(u"email_new")
+        self.customerEditEmail = QLineEdit(self.frame_12)
+        self.customerEditEmail.setObjectName(u"customerEditEmail")
 
-        self.verticalLayout_6.addWidget(self.email_new)
-
-        self.label_20 = QLabel(self.frame_12)
-        self.label_20.setObjectName(u"label_20")
-
-        self.verticalLayout_6.addWidget(self.label_20)
-
-        self.address_new = QLineEdit(self.frame_12)
-        self.address_new.setObjectName(u"address_new")
-
-        self.verticalLayout_6.addWidget(self.address_new)
+        self.verticalLayout_6.addWidget(self.customerEditEmail)
 
         self.customerEditButton = QPushButton(self.frame_12)
         self.customerEditButton.setObjectName(u"customerEditButton")
@@ -915,17 +876,18 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgb(0, 10, 52);\n"
-"	color: rgb(95, 165, 247);\n"
-"	border-color: rgb(95, 165, 247);\n"
-"}")
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(153, 153, 0);\n"
+"	border: 1px solid rgb(153, 153, 0);\n"
+"}\n"
+"")
 
         self.verticalLayout_6.addWidget(self.customerEditButton)
 
-        self.customer_action_stack.addWidget(self.edit_car_2)
-        self.delete_car_2 = QWidget()
-        self.delete_car_2.setObjectName(u"delete_car_2")
-        self.frame_13 = QFrame(self.delete_car_2)
+        self.customer_action_stack.addWidget(self.edit_customer)
+        self.delete_customer = QWidget()
+        self.delete_customer.setObjectName(u"delete_customer")
+        self.frame_13 = QFrame(self.delete_customer)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setGeometry(QRect(0, 30, 191, 161))
         self.frame_13.setStyleSheet(u"QFrame{\n"
@@ -947,10 +909,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.label_21)
 
-        self.customerIDRemove = QLineEdit(self.frame_13)
-        self.customerIDRemove.setObjectName(u"customerIDRemove")
+        self.customerRemoveCustomerID = QLineEdit(self.frame_13)
+        self.customerRemoveCustomerID.setObjectName(u"customerRemoveCustomerID")
 
-        self.verticalLayout_7.addWidget(self.customerIDRemove)
+        self.verticalLayout_7.addWidget(self.customerRemoveCustomerID)
 
         self.customerRemoveButton = QPushButton(self.frame_13)
         self.customerRemoveButton.setObjectName(u"customerRemoveButton")
@@ -964,14 +926,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgb(0, 10, 52);\n"
-"	color: rgb(95, 165, 247);\n"
-"	border-color: rgb(95, 165, 247);\n"
+"	background-color: rgb(245, 245, 245);\n"
+"	color: rgb(255, 0, 0);\n"
+"	border: 1px solid rgb(255, 0, 0);\n"
 "}")
 
         self.verticalLayout_7.addWidget(self.customerRemoveButton)
 
-        self.customer_action_stack.addWidget(self.delete_car_2)
+        self.customer_action_stack.addWidget(self.delete_customer)
         self.frame_14 = QFrame(self.frame_10)
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setGeometry(QRect(30, 30, 161, 121))
@@ -1079,21 +1041,28 @@ class Ui_MainWindow(object):
         self.rentalTable = QTableWidget(self.frame_15)
         if (self.rentalTable.columnCount() < 4):
             self.rentalTable.setColumnCount(4)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        __qtablewidgetitem8.setFont(font3);
+        self.rentalTable.setHorizontalHeaderItem(0, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        __qtablewidgetitem9.setFont(font3);
+        self.rentalTable.setHorizontalHeaderItem(1, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
         __qtablewidgetitem10.setFont(font3);
-        self.rentalTable.setHorizontalHeaderItem(0, __qtablewidgetitem10)
+        self.rentalTable.setHorizontalHeaderItem(2, __qtablewidgetitem10)
         __qtablewidgetitem11 = QTableWidgetItem()
         __qtablewidgetitem11.setFont(font3);
-        self.rentalTable.setHorizontalHeaderItem(1, __qtablewidgetitem11)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        __qtablewidgetitem12.setFont(font3);
-        self.rentalTable.setHorizontalHeaderItem(2, __qtablewidgetitem12)
-        __qtablewidgetitem13 = QTableWidgetItem()
-        __qtablewidgetitem13.setFont(font3);
-        self.rentalTable.setHorizontalHeaderItem(3, __qtablewidgetitem13)
+        self.rentalTable.setHorizontalHeaderItem(3, __qtablewidgetitem11)
         self.rentalTable.setObjectName(u"rentalTable")
-        self.rentalTable.setGeometry(QRect(20, 20, 631, 641))
-        self.rentalTable.setFont(font2)
+        self.rentalTable.setGeometry(QRect(20, 20, 641, 651))
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.rentalTable.sizePolicy().hasHeightForWidth())
+        self.rentalTable.setSizePolicy(sizePolicy2)
+        self.rentalTable.setFont(font1)
+        self.rentalTable.viewport().setProperty("cursor", QCursor(Qt.IBeamCursor))
+        self.rentalTable.setAutoFillBackground(False)
         self.rentalTable.setStyleSheet(u"QWidget {\n"
 "	background-color: rgb(245, 245, 245);\n"
 "	border-radius: 7px;\n"
@@ -1102,7 +1071,8 @@ class Ui_MainWindow(object):
 "\n"
 "QTableWidget{\n"
 "	background-color: rgb(232, 232, 232);\n"
-"	\n"
+"	font: 9pt \"Segoe UI\";\n"
+"\n"
 "	color: rgb(0, 10, 52);\n"
 "\n"
 "}\n"
@@ -1121,9 +1091,16 @@ class Ui_MainWindow(object):
 "  background: lightgray;\n"
 "color: rgb(0, 10, 52);\n"
 " }")
+        self.rentalTable.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
+        self.rentalTable.setShowGrid(True)
+        self.rentalTable.setSortingEnabled(False)
+        self.rentalTable.horizontalHeader().setCascadingSectionResizes(False)
+        self.rentalTable.horizontalHeader().setDefaultSectionSize(150)
+        self.rentalTable.horizontalHeader().setProperty("showSortIndicator", False)
+        self.rentalTable.horizontalHeader().setStretchLastSection(True)
         self.frame_16 = QFrame(self.frame_15)
         self.frame_16.setObjectName(u"frame_16")
-        self.frame_16.setGeometry(QRect(660, 20, 241, 641))
+        self.frame_16.setGeometry(QRect(670, 20, 241, 651))
         self.frame_16.setStyleSheet(u"background-color: rgb(245, 245, 245);\n"
 "border-radius: 7px;")
         self.frame_16.setFrameShape(QFrame.StyledPanel)
@@ -1150,27 +1127,27 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.label_22)
 
-        self.RegistrationNumber_3 = QLineEdit(self.frame_17)
-        self.RegistrationNumber_3.setObjectName(u"RegistrationNumber_3")
+        self.rentalCarID = QLineEdit(self.frame_17)
+        self.rentalCarID.setObjectName(u"rentalCarID")
 
-        self.verticalLayout_8.addWidget(self.RegistrationNumber_3)
+        self.verticalLayout_8.addWidget(self.rentalCarID)
 
         self.label_23 = QLabel(self.frame_17)
         self.label_23.setObjectName(u"label_23")
 
         self.verticalLayout_8.addWidget(self.label_23)
 
-        self.Make_3 = QLineEdit(self.frame_17)
-        self.Make_3.setObjectName(u"Make_3")
+        self.rentalCustomerID = QLineEdit(self.frame_17)
+        self.rentalCustomerID.setObjectName(u"rentalCustomerID")
 
-        self.verticalLayout_8.addWidget(self.Make_3)
+        self.verticalLayout_8.addWidget(self.rentalCustomerID)
 
-        self.customerAddButton_2 = QPushButton(self.frame_17)
-        self.customerAddButton_2.setObjectName(u"customerAddButton_2")
-        sizePolicy.setHeightForWidth(self.customerAddButton_2.sizePolicy().hasHeightForWidth())
-        self.customerAddButton_2.setSizePolicy(sizePolicy)
-        self.customerAddButton_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.customerAddButton_2.setStyleSheet(u"QPushButton{\n"
+        self.rentalStartButton = QPushButton(self.frame_17)
+        self.rentalStartButton.setObjectName(u"rentalStartButton")
+        sizePolicy.setHeightForWidth(self.rentalStartButton.sizePolicy().hasHeightForWidth())
+        self.rentalStartButton.setSizePolicy(sizePolicy)
+        self.rentalStartButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.rentalStartButton.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(95, 165, 247);\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "margin-top:14px;\n"
@@ -1178,11 +1155,11 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:hover{\n"
 "	background-color: rgb(245, 245, 245);\n"
-"	color: rgb(0, 223, 0);\n"
-"	border: 1px solid rgb(0, 223, 0);\n"
+"	color: rgb(0, 162, 38);\n"
+"	border: 1px solid rgb(0, 162, 38);\n"
 "}")
 
-        self.verticalLayout_8.addWidget(self.customerAddButton_2)
+        self.verticalLayout_8.addWidget(self.rentalStartButton)
 
         self.label_26 = QLabel(self.frame_16)
         self.label_26.setObjectName(u"label_26")
@@ -1209,17 +1186,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_9.addWidget(self.label_24)
 
-        self.RegistrationNumber_4 = QLineEdit(self.frame_18)
-        self.RegistrationNumber_4.setObjectName(u"RegistrationNumber_4")
+        self.rentalRentalID = QLineEdit(self.frame_18)
+        self.rentalRentalID.setObjectName(u"rentalRentalID")
 
-        self.verticalLayout_9.addWidget(self.RegistrationNumber_4)
+        self.verticalLayout_9.addWidget(self.rentalRentalID)
 
-        self.customerAddButton_3 = QPushButton(self.frame_18)
-        self.customerAddButton_3.setObjectName(u"customerAddButton_3")
-        sizePolicy.setHeightForWidth(self.customerAddButton_3.sizePolicy().hasHeightForWidth())
-        self.customerAddButton_3.setSizePolicy(sizePolicy)
-        self.customerAddButton_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.customerAddButton_3.setStyleSheet(u"QPushButton{\n"
+        self.rentalEndButton = QPushButton(self.frame_18)
+        self.rentalEndButton.setObjectName(u"rentalEndButton")
+        sizePolicy.setHeightForWidth(self.rentalEndButton.sizePolicy().hasHeightForWidth())
+        self.rentalEndButton.setSizePolicy(sizePolicy)
+        self.rentalEndButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.rentalEndButton.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(95, 165, 247);\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "margin-top:15px;\n"
@@ -1233,7 +1210,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
 
-        self.verticalLayout_9.addWidget(self.customerAddButton_3)
+        self.verticalLayout_9.addWidget(self.rentalEndButton)
 
         self.label_27 = QLabel(self.frame_16)
         self.label_27.setObjectName(u"label_27")
@@ -1256,7 +1233,7 @@ class Ui_MainWindow(object):
         self.logo.setText("")
         self.carsMenu.setText(QCoreApplication.translate("MainWindow", u"Cars", None))
         self.customersMenu.setText(QCoreApplication.translate("MainWindow", u"Customers", None))
-        self.assignMenu.setText(QCoreApplication.translate("MainWindow", u"Rentals", None))
+        self.rentalMenu.setText(QCoreApplication.translate("MainWindow", u"Rentals", None))
         self.searchMenu.setText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.settingsMenu.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.page_name_label.setText(QCoreApplication.translate("MainWindow", u"Car Rental", None))
@@ -1268,64 +1245,56 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Make", None));
         ___qtablewidgetitem3 = self.carTable.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Year", None));
-        ___qtablewidgetitem4 = self.carTable.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Status", None));
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"RegistrationNumber", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Make", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Year", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Color", None))
         self.carAddButton.setText(QCoreApplication.translate("MainWindow", u"Add Car", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Car ID", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"New Registration Nulmber", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"New Make", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"New Year", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"New Color", None))
         self.carEditButton.setText(QCoreApplication.translate("MainWindow", u"Edit Car", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"Car ID", None))
         self.carRemoveButton.setText(QCoreApplication.translate("MainWindow", u"Remove Car", None))
         self.car_addRadio.setText(QCoreApplication.translate("MainWindow", u"Add Car", None))
         self.car_editRadio.setText(QCoreApplication.translate("MainWindow", u"Edit Car", None))
         self.car_deleteRadio.setText(QCoreApplication.translate("MainWindow", u"Delete Car", None))
-        ___qtablewidgetitem5 = self.customerTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"CustomerID", None));
-        ___qtablewidgetitem6 = self.customerTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Name", None));
-        ___qtablewidgetitem7 = self.customerTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"ContactNumber", None));
-        ___qtablewidgetitem8 = self.customerTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Email", None));
-        ___qtablewidgetitem9 = self.customerTable.horizontalHeaderItem(4)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Address", None));
+        ___qtablewidgetitem4 = self.customerTable.horizontalHeaderItem(0)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"CustomerID", None));
+        ___qtablewidgetitem5 = self.customerTable.horizontalHeaderItem(1)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem6 = self.customerTable.horizontalHeaderItem(2)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"ContactNumber", None));
+        ___qtablewidgetitem7 = self.customerTable.horizontalHeaderItem(3)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Email", None));
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Full Name", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"Contact Number", None))
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Email", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Address", None))
         self.customerAddButton.setText(QCoreApplication.translate("MainWindow", u"Add Customer", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Customer ID", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"New Name", None))
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"New Contact Number", None))
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"New Email", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"New Address", None))
         self.customerEditButton.setText(QCoreApplication.translate("MainWindow", u"Edit Customer", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Customer ID", None))
         self.customerRemoveButton.setText(QCoreApplication.translate("MainWindow", u"Remove Customer", None))
         self.customer_addRadio.setText(QCoreApplication.translate("MainWindow", u"Add Customer", None))
         self.customer_editRadio.setText(QCoreApplication.translate("MainWindow", u"Edit Customer", None))
         self.customer_deleteRadio.setText(QCoreApplication.translate("MainWindow", u"Delete Customer", None))
-        ___qtablewidgetitem10 = self.rentalTable.horizontalHeaderItem(0)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Rental_ID", None));
-        ___qtablewidgetitem11 = self.rentalTable.horizontalHeaderItem(1)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Car_ID", None));
-        ___qtablewidgetitem12 = self.rentalTable.horizontalHeaderItem(2)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Customer_ID", None));
-        ___qtablewidgetitem13 = self.rentalTable.horizontalHeaderItem(3)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"RentalDateTime", None));
+        ___qtablewidgetitem8 = self.rentalTable.horizontalHeaderItem(0)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Rental_ID", None));
+        ___qtablewidgetitem9 = self.rentalTable.horizontalHeaderItem(1)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Car_ID", None));
+        ___qtablewidgetitem10 = self.rentalTable.horizontalHeaderItem(2)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Customer_ID", None));
+        ___qtablewidgetitem11 = self.rentalTable.horizontalHeaderItem(3)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"StartDate", None));
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Car ID", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Customer ID", None))
-        self.customerAddButton_2.setText(QCoreApplication.translate("MainWindow", u"Assign Car", None))
-        self.label_26.setText(QCoreApplication.translate("MainWindow", u"Add Rental", None))
+        self.rentalStartButton.setText(QCoreApplication.translate("MainWindow", u"Assign Car", None))
+        self.label_26.setText(QCoreApplication.translate("MainWindow", u"Start Rental", None))
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Rental ID", None))
-        self.customerAddButton_3.setText(QCoreApplication.translate("MainWindow", u"Unassign Car", None))
-        self.label_27.setText(QCoreApplication.translate("MainWindow", u"Remove Rental", None))
+        self.rentalEndButton.setText(QCoreApplication.translate("MainWindow", u"Unassign Car", None))
+        self.label_27.setText(QCoreApplication.translate("MainWindow", u"End Rental", None))
     # retranslateUi
 

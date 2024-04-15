@@ -1,11 +1,12 @@
-from PySide6.QtWidgets import QButtonGroup, QHeaderView, QTableWidgetItem
-from services.car_service import CarService
+from PySide6.QtWidgets import QButtonGroup, QTableWidgetItem, QMessageBox
+from data_access.car_database import CarDatabase
+
 
 class CarInterface:
     def __init__(self, main_window):
 
         self.main_window = main_window
-        self.car_service = CarService()
+        self.car_database = CarDatabase()
 
         self.main_window.carsMenu.toggle()
         self.main_window.updateTable = self.update_table
@@ -13,8 +14,7 @@ class CarInterface:
 
         self.main_window.carsMenu.clicked.connect(self.displayCarsPage)
 
-        # Set the stretch mode for the horizontal header of the carTable
-        self.main_window.carTable.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        #self.main_window.carTable.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # Create the button group
         self.main_window.carRadioGroup = QButtonGroup(self.main_window)
@@ -26,6 +26,9 @@ class CarInterface:
         self.main_window.carRadioGroup.buttonToggled.connect(self.handleCarRadioToggle)
 
         self.main_window.carAddButton.clicked.connect(self.add_car)
+        self.main_window.carEditButton.clicked.connect(self.edit_car)
+        self.main_window.carEditCarID.editingFinished.connect(self.populate_car_details)
+        self.main_window.carRemoveButton.clicked.connect(self.remove_car)
 
         self.update_table()
 
@@ -51,22 +54,69 @@ class CarInterface:
 
 
     def add_car(self):
-        car_RegistrationNumber = self.main_window.registrationNumber.text()
-        car_Make = self.main_window.make.text()
-        car_Year = self.main_window.year.text()
-        car_Color = self.main_window.color.text()
+        carRegNumber = self.main_window.carRegNumber.text()
+        carMake = self.main_window.carMake.text()
+        carYear = self.main_window.carYear.text()
 
-        self.car_service.add_new_car(car_RegistrationNumber, car_Make, car_Year, car_Color)
+        self.car_database.add_car(carRegNumber, carMake, carYear)
 
-        self.main_window.registrationNumber.clear()
-        self.main_window.make.clear()
-        self.main_window.year.clear()
-        self.main_window.color.clear()
+        self.main_window.carRegNumber.clear()
+        self.main_window.carMake.clear()
+        self.main_window.carYear.clear()
 
         self.update_table()
 
+
+    def edit_car(self):
+        car_id = self.main_window.carEditCarID.text().strip()
+        car_reg = self.main_window.carEditRegNumber.text().strip()
+        car_make = self.main_window.carEditMake.text().strip()
+        car_year = self.main_window.carEditYear.text().strip()
+
+        if not car_id.isdigit():
+            QMessageBox.warning(self.main_window, 'Input Error', 'Car ID must be a numeric value.')
+            return
+
+        self.car_database.edit_car(car_id, car_reg, car_make, car_year)
+        QMessageBox.information(self.main_window, 'Success', 'Car information updated successfully.')
+        self.update_table()
+
+
+    def populate_car_details(self):
+        car_id = self.main_window.carEditCarID.text().strip()
+        if car_id.isdigit():
+            car_details = self.car_database.get_car_by_id(car_id)
+            if car_details:
+                self.main_window.carEditRegNumber.setText(car_details[1])  # car_reg
+                self.main_window.carEditMake.setText(car_details[2])  # car_make
+                self.main_window.carEditYear.setText(str(car_details[3]))  # car_year
+            else:
+                QMessageBox.warning(self.main_window, 'Not Found', 'No car found with the provided ID.')
+        else:
+            QMessageBox.warning(self.main_window, 'Input Error', 'Please enter a valid numeric ID.')
+
+    def remove_car(self):
+        car_id = self.main_window.carRemoveCarID.text().strip()
+        if car_id.isdigit():
+            car_details = self.car_database.get_car_by_id(car_id)
+            if car_details:
+                confirm_msg = QMessageBox.question(self.main_window, 'Confirm Deletion',
+                                                   "Are you sure you want to delete this car?",
+                                                   QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+                if confirm_msg == QMessageBox.Yes:
+                    self.car_database.delete_car(car_id)
+                    QMessageBox.information(self.main_window, 'Success', 'Car has been deleted successfully.')
+                    self.update_table()
+            else:
+                QMessageBox.warning(self.main_window, 'Not Found', 'No car found with the provided ID.')
+        else:
+            QMessageBox.warning(self.main_window, 'Input Error', 'Please enter a valid numeric ID.')
+
+        # Clear the input field after processing
+        self.main_window.carRemoveCarID.clear()
+
     def update_table(self):
-        rows = self.car_service.get_all_cars()
+        rows = self.car_database.get_all_cars()
 
         self.main_window.carTable.setRowCount(len(rows))
         for row_index, row_data in enumerate(rows):

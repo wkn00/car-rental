@@ -243,7 +243,7 @@ QRadioButton:checked {
       </size>
      </property>
     </widget>
-    <widget class="QRadioButton" name="assignMenu">
+    <widget class="QRadioButton" name="rentalMenu">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -437,7 +437,7 @@ color: rgb(0, 10, 52);
         <property name="font">
          <font>
           <family>Segoe UI</family>
-          <pointsize>7</pointsize>
+          <pointsize>9</pointsize>
           <italic>false</italic>
           <bold>false</bold>
          </font>
@@ -452,7 +452,7 @@ color: rgb(0, 10, 52);
 QTableWidget{
 	background-color: rgb(232, 232, 232);
 	
-	font: 7pt &quot;Segoe UI&quot;;
+	font: 9pt &quot;Segoe UI&quot;;
 	color: rgb(0, 10, 52);
 
 }
@@ -476,6 +476,12 @@ color: rgb(0, 10, 52);
 color: rgb(0, 10, 52);
  }</string>
         </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>155</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>CarID</string>
@@ -494,11 +500,6 @@ color: rgb(0, 10, 52);
         <column>
          <property name="text">
           <string>Year</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Status</string>
          </property>
         </column>
        </widget>
@@ -527,7 +528,7 @@ border-radius: 7px;</string>
            <x>20</x>
            <y>180</y>
            <width>193</width>
-           <height>421</height>
+           <height>451</height>
           </rect>
          </property>
          <property name="currentIndex">
@@ -541,7 +542,7 @@ border-radius: 7px;</string>
              <x>0</x>
              <y>10</y>
              <width>191</width>
-             <height>411</height>
+             <height>311</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -578,7 +579,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="registrationNumber"/>
+             <widget class="QLineEdit" name="carRegNumber"/>
             </item>
             <item>
              <widget class="QLabel" name="label_5">
@@ -588,7 +589,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="make"/>
+             <widget class="QLineEdit" name="carMake"/>
             </item>
             <item>
              <widget class="QLabel" name="label_6">
@@ -598,17 +599,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="year"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>Color</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="color"/>
+             <widget class="QLineEdit" name="carYear"/>
             </item>
             <item>
              <widget class="QPushButton" name="carAddButton">
@@ -629,9 +620,9 @@ margin-top:15px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 10, 52);
-	color: rgb(95, 165, 247);
-	border-color: rgb(95, 165, 247);
+	background-color: rgb(245, 245, 245);
+	color: rgb(0, 162, 38);
+	border: 1px solid rgb(0, 162, 38);
 }</string>
               </property>
               <property name="text">
@@ -656,7 +647,7 @@ color: rgb(0, 10, 52);
              <x>0</x>
              <y>10</y>
              <width>191</width>
-             <height>411</height>
+             <height>391</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -698,7 +689,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="carID_new"/>
+             <widget class="QLineEdit" name="carEditCarID"/>
             </item>
             <item>
              <widget class="QLabel" name="label_3">
@@ -716,7 +707,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="registrationNumber_new"/>
+             <widget class="QLineEdit" name="carEditRegNumber"/>
             </item>
             <item>
              <widget class="QLabel" name="label_7">
@@ -734,7 +725,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="make_new"/>
+             <widget class="QLineEdit" name="carEditMake"/>
             </item>
             <item>
              <widget class="QLabel" name="label_8">
@@ -744,17 +735,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="year_new"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>New Color</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="color_new"/>
+             <widget class="QLineEdit" name="carEditYear"/>
             </item>
             <item>
              <widget class="QPushButton" name="carEditButton">
@@ -775,9 +756,9 @@ margin-top:15px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 10, 52);
-	color: rgb(95, 165, 247);
-	border-color: rgb(95, 165, 247);
+	background-color: rgb(245, 245, 245);
+	color: rgb(150, 150, 0);
+	border: 1px solid rgb(153, 153, 0);
 }</string>
               </property>
               <property name="text">
@@ -836,7 +817,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="carIDRemove"/>
+             <widget class="QLineEdit" name="carRemoveCarID"/>
             </item>
             <item>
              <widget class="QPushButton" name="carRemoveButton">
@@ -857,9 +838,9 @@ margin-top:15px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 10, 52);
-	color: rgb(95, 165, 247);
-	border-color: rgb(95, 165, 247);
+	background-color: rgb(245, 245, 245);
+	color: rgb(255, 0, 0);
+	border: 1px solid rgb(255, 0, 0);
 }</string>
               </property>
               <property name="text">
@@ -1035,17 +1016,20 @@ color: rgb(0, 10, 52);
          <rect>
           <x>20</x>
           <y>20</y>
-          <width>631</width>
-          <height>641</height>
+          <width>641</width>
+          <height>651</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>Segoe UI Semibold</family>
-          <pointsize>10</pointsize>
+          <family>Segoe UI</family>
+          <pointsize>9</pointsize>
           <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
+          <bold>false</bold>
          </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QWidget {
@@ -1056,7 +1040,7 @@ color: rgb(0, 10, 52);
 
 QTableWidget{
 	background-color: rgb(232, 232, 232);
-	
+	font: 9pt &quot;Segoe UI&quot;;
 	color: rgb(0, 10, 52);
 
 }
@@ -1076,6 +1060,15 @@ color: rgb(0, 10, 52);
 color: rgb(0, 10, 52);
  }</string>
         </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>155</number>
+        </attribute>
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>CustomerID</string>
@@ -1116,24 +1109,14 @@ color: rgb(0, 10, 52);
           </font>
          </property>
         </column>
-        <column>
-         <property name="text">
-          <string>Address</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-          </font>
-         </property>
-        </column>
        </widget>
        <widget class="QFrame" name="frame_10">
         <property name="geometry">
          <rect>
-          <x>660</x>
+          <x>670</x>
           <y>20</y>
           <width>241</width>
-          <height>641</height>
+          <height>651</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1158,15 +1141,15 @@ border-radius: 7px;</string>
          <property name="currentIndex">
           <number>1</number>
          </property>
-         <widget class="QWidget" name="car_empty_2"/>
-         <widget class="QWidget" name="add_car_2">
+         <widget class="QWidget" name="customer_empty"/>
+         <widget class="QWidget" name="add_customer">
           <widget class="QFrame" name="frame_11">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>10</y>
              <width>191</width>
-             <height>411</height>
+             <height>311</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1196,7 +1179,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="RegistrationNumber_2"/>
+             <widget class="QLineEdit" name="customerName"/>
             </item>
             <item>
              <widget class="QLabel" name="label_13">
@@ -1206,7 +1189,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="Make_2"/>
+             <widget class="QLineEdit" name="customerNumber"/>
             </item>
             <item>
              <widget class="QLabel" name="label_14">
@@ -1216,17 +1199,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="Year_2"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_15">
-              <property name="text">
-               <string>Address</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="Color_2"/>
+             <widget class="QLineEdit" name="customerEmail"/>
             </item>
             <item>
              <widget class="QPushButton" name="customerAddButton">
@@ -1247,9 +1220,9 @@ margin-top:15px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 10, 52);
-	color: rgb(95, 165, 247);
-	border-color: rgb(95, 165, 247);
+	background-color: rgb(245, 245, 245);
+	color: rgb(0, 162, 38);
+	border: 1px solid rgb(0, 162, 38);
 }</string>
               </property>
               <property name="text">
@@ -1260,14 +1233,14 @@ QPushButton:hover{
            </layout>
           </widget>
          </widget>
-         <widget class="QWidget" name="edit_car_2">
+         <widget class="QWidget" name="edit_customer">
           <widget class="QFrame" name="frame_12">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>10</y>
              <width>191</width>
-             <height>411</height>
+             <height>391</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1305,7 +1278,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="customerID_new"/>
+             <widget class="QLineEdit" name="customerEditCustomerID"/>
             </item>
             <item>
              <widget class="QLabel" name="label_17">
@@ -1323,7 +1296,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="name_new"/>
+             <widget class="QLineEdit" name="customerEditName"/>
             </item>
             <item>
              <widget class="QLabel" name="label_18">
@@ -1341,7 +1314,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="contactNumber_new"/>
+             <widget class="QLineEdit" name="customerEditNumber"/>
             </item>
             <item>
              <widget class="QLabel" name="label_19">
@@ -1351,17 +1324,7 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="email_new"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_20">
-              <property name="text">
-               <string>New Address</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="address_new"/>
+             <widget class="QLineEdit" name="customerEditEmail"/>
             </item>
             <item>
              <widget class="QPushButton" name="customerEditButton">
@@ -1382,10 +1345,11 @@ margin-top:15px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 10, 52);
-	color: rgb(95, 165, 247);
-	border-color: rgb(95, 165, 247);
-}</string>
+	background-color: rgb(245, 245, 245);
+	color: rgb(153, 153, 0);
+	border: 1px solid rgb(153, 153, 0);
+}
+</string>
               </property>
               <property name="text">
                <string>Edit Customer</string>
@@ -1395,7 +1359,7 @@ QPushButton:hover{
            </layout>
           </widget>
          </widget>
-         <widget class="QWidget" name="delete_car_2">
+         <widget class="QWidget" name="delete_customer">
           <widget class="QFrame" name="frame_13">
            <property name="geometry">
             <rect>
@@ -1441,7 +1405,7 @@ border-radius:10px;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="customerIDRemove"/>
+             <widget class="QLineEdit" name="customerRemoveCustomerID"/>
             </item>
             <item>
              <widget class="QPushButton" name="customerRemoveButton">
@@ -1462,9 +1426,9 @@ margin-top:15px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 10, 52);
-	color: rgb(95, 165, 247);
-	border-color: rgb(95, 165, 247);
+	background-color: rgb(245, 245, 245);
+	color: rgb(255, 0, 0);
+	border: 1px solid rgb(255, 0, 0);
 }</string>
               </property>
               <property name="text">
@@ -1638,17 +1602,29 @@ color: rgb(0, 10, 52);
          <rect>
           <x>20</x>
           <y>20</y>
-          <width>631</width>
-          <height>641</height>
+          <width>641</width>
+          <height>651</height>
          </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="font">
          <font>
-          <family>Segoe UI Semibold</family>
-          <pointsize>10</pointsize>
+          <family>Segoe UI</family>
+          <pointsize>9</pointsize>
           <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
+          <bold>false</bold>
          </font>
+        </property>
+        <property name="cursor" stdset="0">
+         <cursorShape>IBeamCursor</cursorShape>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">QWidget {
@@ -1659,7 +1635,8 @@ color: rgb(0, 10, 52);
 
 QTableWidget{
 	background-color: rgb(232, 232, 232);
-	
+	font: 9pt &quot;Segoe UI&quot;;
+
 	color: rgb(0, 10, 52);
 
 }
@@ -1679,6 +1656,27 @@ color: rgb(0, 10, 52);
 color: rgb(0, 10, 52);
  }</string>
         </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustIgnored</enum>
+        </property>
+        <property name="showGrid">
+         <bool>true</bool>
+        </property>
+        <property name="sortingEnabled">
+         <bool>false</bool>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>150</number>
+        </attribute>
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>Rental_ID</string>
@@ -1711,7 +1709,7 @@ color: rgb(0, 10, 52);
         </column>
         <column>
          <property name="text">
-          <string>RentalDateTime</string>
+          <string>StartDate</string>
          </property>
          <property name="font">
           <font>
@@ -1723,10 +1721,10 @@ color: rgb(0, 10, 52);
        <widget class="QFrame" name="frame_16">
         <property name="geometry">
          <rect>
-          <x>660</x>
+          <x>670</x>
           <y>20</y>
           <width>241</width>
-          <height>641</height>
+          <height>651</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1775,7 +1773,7 @@ color: rgb(0, 10, 52);
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="RegistrationNumber_3"/>
+           <widget class="QLineEdit" name="rentalCarID"/>
           </item>
           <item>
            <widget class="QLabel" name="label_23">
@@ -1785,10 +1783,10 @@ color: rgb(0, 10, 52);
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="Make_3"/>
+           <widget class="QLineEdit" name="rentalCustomerID"/>
           </item>
           <item>
-           <widget class="QPushButton" name="customerAddButton_2">
+           <widget class="QPushButton" name="rentalStartButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -1807,8 +1805,8 @@ margin-top:14px;
 
 QPushButton:hover{
 	background-color: rgb(245, 245, 245);
-	color: rgb(0, 223, 0);
-	border: 1px solid rgb(0, 223, 0);
+	color: rgb(0, 162, 38);
+	border: 1px solid rgb(0, 162, 38);
 }</string>
             </property>
             <property name="text">
@@ -1828,7 +1826,7 @@ QPushButton:hover{
           </rect>
          </property>
          <property name="text">
-          <string>Add Rental</string>
+          <string>Start Rental</string>
          </property>
         </widget>
         <widget class="QFrame" name="frame_18">
@@ -1867,10 +1865,10 @@ color: rgb(0, 10, 52);
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="RegistrationNumber_4"/>
+           <widget class="QLineEdit" name="rentalRentalID"/>
           </item>
           <item>
-           <widget class="QPushButton" name="customerAddButton_3">
+           <widget class="QPushButton" name="rentalEndButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -1912,7 +1910,7 @@ QPushButton:hover{
           </rect>
          </property>
          <property name="text">
-          <string>Remove Rental</string>
+          <string>End Rental</string>
          </property>
         </widget>
        </widget>
