@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QButtonGroup, QTableWidgetItem, QMessageBox
-from data_access.car_database import CarDatabase
+from data_access.cars_database import CarDatabase
 
 
 class CarInterface:

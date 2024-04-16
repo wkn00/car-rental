@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
-from data_access.rental_database import RentalDatabase
-from data_access.customer_database import CustomerDatabase
-from data_access.car_database import CarDatabase
+from data_access.rentals_database import RentalDatabase
+from data_access.customers_database import CustomerDatabase
+from data_access.cars_database import CarDatabase
 
 class RentalInterface:
     def __init__(self, main_window):
