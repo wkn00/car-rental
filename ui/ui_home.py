@@ -316,6 +316,7 @@ class Ui_MainWindow(object):
 "  background: lightgray;\n"
 "color: rgb(0, 10, 52);\n"
 " }")
+        self.carTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.carTable.horizontalHeader().setDefaultSectionSize(155)
         self.carTable.horizontalHeader().setStretchLastSection(True)
         self.frame_5 = QFrame(self.frame_8)
@@ -722,6 +723,7 @@ class Ui_MainWindow(object):
 "  background: lightgray;\n"
 "color: rgb(0, 10, 52);\n"
 " }")
+        self.customerTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.customerTable.horizontalHeader().setDefaultSectionSize(155)
         self.customerTable.horizontalHeader().setProperty("showSortIndicator", True)
         self.customerTable.horizontalHeader().setStretchLastSection(True)
@@ -1099,6 +1101,7 @@ class Ui_MainWindow(object):
 "color: rgb(0, 10, 52);\n"
 " }")
         self.rentalTable.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
+        self.rentalTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.rentalTable.setShowGrid(True)
         self.rentalTable.setSortingEnabled(False)
         self.rentalTable.horizontalHeader().setCascadingSectionResizes(False)
@@ -1370,13 +1373,14 @@ class Ui_MainWindow(object):
 
         self.carsList = QListWidget(self.frame_19)
         self.carsList.setObjectName(u"carsList")
-        self.carsList.setGeometry(QRect(90, 100, 491, 151))
+        self.carsList.setGeometry(QRect(100, 140, 491, 70))
         self.carsList.setStyleSheet(u"background-color: rgb(180, 180, 180);\n"
 "border-radius: 9px;\n"
-"font: 9pt \"Segoe UI\";")
+"font: 10pt \"Segoe UI\";\n"
+"color:rgb(0, 10, 52);")
         self.customerList = QListWidget(self.frame_19)
         self.customerList.setObjectName(u"customerList")
-        self.customerList.setGeometry(QRect(90, 400, 511, 171))
+        self.customerList.setGeometry(QRect(100, 430, 511, 100))
         self.customerList.setStyleSheet(u"background-color: rgb(180, 180, 180);\n"
 "border-radius: 9px;\n"
 "font: 10pt \"Segoe UI\";\n"
@@ -1599,7 +1603,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages_stack.setCurrentIndex(4)
+        self.pages_stack.setCurrentIndex(0)
         self.car_action_stack.setCurrentIndex(3)
         self.customer_action_stack.setCurrentIndex(2)
 
