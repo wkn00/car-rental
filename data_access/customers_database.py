@@ -1,31 +1,20 @@
 import sqlite3
-from data_access.database_manager import DATABASE_FILE  # Import the constant for the database file path
+from data_access.database_manager import DATABASE_FILE  # Importing the path to the SQLite database file.
 
 class CustomerDatabase:
     def __init__(self):
-        # No more creation or setting up of the database in here, just initialization
         pass
 
     def add_customer(self, customer_name, customer_number, customer_email):
-        with sqlite3.connect(DATABASE_FILE) as conn:
-            cursor = conn.cursor()
+        # Adds a new customer to the database.
+        with sqlite3.connect(DATABASE_FILE) as conn:  # Opens a connection to the database.
+            cursor = conn.cursor()  # Creates a cursor object using the connection.
             cursor.execute("INSERT INTO customers (customer_name, customer_number, customer_email) VALUES (?, ?, ?)",
-                           (customer_name, customer_number, customer_email))
-            conn.commit()
-
-    def customer_exists(self, customer_id):
-        with sqlite3.connect(DATABASE_FILE) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT 1 FROM customers WHERE customer_id = ?", (customer_id,))
-            return cursor.fetchone()
-
-    def get_customer_by_id(self, customer_id):
-        with sqlite3.connect(DATABASE_FILE) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM customers WHERE customer_id = ?", (customer_id,))
-            return cursor.fetchone()
+                           (customer_name, customer_number, customer_email))  # Executes an SQL statement to insert a new customer.
+            conn.commit()  # Commits the transaction.
 
     def edit_customer(self, customer_id, customer_name, customer_number, customer_email):
+        # Updates a customer's details in the database.
         with sqlite3.connect(DATABASE_FILE) as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -34,17 +23,18 @@ class CustomerDatabase:
                 customer_number = ?,
                 customer_email = ?
                 WHERE customer_id = ?
-                """, (customer_name, customer_number, customer_email, customer_id))
-            conn.commit()
+                """, (customer_name, customer_number, customer_email, customer_id))  # SQL update statement.
+            conn.commit()  # Commits the changes.
 
     def delete_customer(self, customer_id):
+        # Deletes a customer from the database based on their ID.
         with sqlite3.connect(DATABASE_FILE) as conn:
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM customers WHERE customer_id = ?", (customer_id,))
-            conn.commit()
-
+            cursor.execute("DELETE FROM customers WHERE customer_id = ?", (customer_id,))  # SQL delete statement.
+            conn.commit()  # Commits the deletion.
 
     def search_customers_by_mobile(self, mobile_number):
+        # Searches for customers by their mobile number, possibly including joined data from rentals and cars.
         with sqlite3.connect(DATABASE_FILE) as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -53,11 +43,26 @@ class CustomerDatabase:
                 LEFT JOIN rentals ON customers.customer_id = rentals.customer_id
                 LEFT JOIN cars ON rentals.car_id = cars.car_id
                 WHERE customers.customer_number LIKE ?
-            """, ('%' + mobile_number + '%',))
-            return cursor.fetchall()
+            """, ('%' + mobile_number + '%',))  # SQL search with a wildcard match.
+            return cursor.fetchall()  # Returns all matching records.
+
+    def get_customer_by_id(self, customer_id):
+        # Retrieves a customer by their ID from the database.
+        with sqlite3.connect(DATABASE_FILE) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM customers WHERE customer_id = ?", (customer_id,))  # SQL query to find a customer by ID.
+            return cursor.fetchone()  # Returns a single record from the query.
 
     def get_all_customers(self):
+        # Retrieves all customers from the database.
         with sqlite3.connect(DATABASE_FILE) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM customers")
-            return cursor.fetchall()
+            return cursor.fetchall()  # Returns a list of all customers in the database.
+
+    def customer_exists(self, customer_id):
+        # Checks if a specific customer exists in the database by customer_id.
+        with sqlite3.connect(DATABASE_FILE) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT 1 FROM customers WHERE customer_id = ?", (customer_id,))
+            return cursor.fetchone() is not None  # Returns True if the customer exists, otherwise False.

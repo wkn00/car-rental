@@ -1,25 +1,31 @@
 from PySide6.QtWidgets import QFileDialog, QMessageBox
-from PySide6.QtCore import Slot
-from PySide6.QtWidgets import QFileDialog
-
-import json
-import csv
-import xml.etree.ElementTree as ET
+from data_access.export_database import ExportDatabase
+from data_access.import_database import ImportDatabase
 
 class SettingsInterface:
     def __init__(self, main_window):
         self.main_window = main_window
+        self.export_database = ExportDatabase()
+        self.import_database = ImportDatabase()
 
-
+        # UI Elements setup
         self.main_window.settingsFrame.hide()
         self.main_window.settingsMenu.clicked.connect(self.displaySettingsPage)
-
-        #self.main_window.importButton.clicked.connect(self.import_from_json)
         self.main_window.exportButton.clicked.connect(self.showExportButtons)
 
-        self.main_window.exportJson.clicked.connect(self.export_data_to_json)  # Connect the export to JSON button
-        self.main_window.exportXml.clicked.connect(self.export_data_to_xml)  # Connect the export to XML button
-        self.main_window.exportCsv.clicked.connect(self.export_data_to_csv)  # Connect the export to CSV button
+        # Connect export buttons
+        self.main_window.exportJson.clicked.connect(lambda: self.export_data('json'))
+        self.main_window.exportXml.clicked.connect(lambda: self.export_data('xml'))
+        self.main_window.exportCsv.clicked.connect(lambda: self.export_data('csv'))
+
+        # Connect import button
+        self.main_window.importButton.clicked.connect(self.handle_import)
+
+    def displaySettingsPage(self):
+        self.main_window.pages_stack.setCurrentIndex(4)
+        self.main_window.page_name_label.setText("Car Rental - Settings Page")
+        self.main_window.settingsFrame.hide()
+        self.main_window.exportButton.show()
 
     def showExportButtons(self):
         self.main_window.exportButton.hide()
@@ -28,99 +34,29 @@ class SettingsInterface:
         self.main_window.exportXml.show()
         self.main_window.exportCsv.show()
 
-
-    def displaySettingsPage(self):
-        self.main_window.pages_stack.setCurrentIndex(4)
-        self.main_window.page_name_label.setText("Car Rental - Settings Page")
-        self.main_window.settingsFrame.hide()
-        self.main_window.exportButton.show()
-
-
-    @Slot()
-    def export_data_to_csv(self):
-        file_name, _ = QFileDialog.getSaveFileName(self.main_window, "Save File", "", "CSV Files (*.csv)")
+    def handle_import(self):
+        file_name, _ = QFileDialog.getOpenFileName(self.main_window, "Open File", "",
+                                                   "Data Files (*.json *.csv *.xml)")
         if file_name:
-            data = self.fetch_data_from_database()
-            self.write_data_to_csv(data, file_name)
+            if file_name.endswith('.json'):
+                self.import_database.import_from_json(file_name)
+            elif file_name.endswith('.csv'):
+                self.import_database.import_from_csv(file_name)
+            elif file_name.endswith('.xml'):
+                self.import_database.import_from_xml(file_name)
+            else:
+                QMessageBox.warning(self.main_window, "Unsupported File", "The selected file format is not supported.")
+            self.main_window.updateTable()  # Update UI tables after import
 
-    def write_data_to_csv(self, data, filename):
-        with open(filename, 'w', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-
-            # Writing cars data with headers
-            writer.writerow(['Car ID', 'Car Registration', 'Car Make', 'Car Year'])
-            for car in data['cars']:
-                writer.writerow(car)  # Assuming each tuple in 'cars' corresponds directly to these columns
-
-            # Writing a separator between different sections
-            writer.writerow([])
-            writer.writerow(['Customer ID', 'Customer Name', 'Customer Number', 'Customer Email'])
-            for customer in data['customers']:
-                writer.writerow(customer)  # Assuming each tuple in 'customers' corresponds directly to these columns
-
-            # Another separator
-            writer.writerow([])
-            writer.writerow(['Rental ID', 'Car ID', 'Customer ID', 'Start Date'])
-            for rental in data['rentals']:
-                writer.writerow(rental)  # Assuming each tuple in 'rentals' corresponds directly to these columns
-
-        QMessageBox.information(self.main_window, "Data successfully exported as CSV to", filename)
-        print("Data successfully exported to", filename)
-    
-
-    @Slot()
-    def export_data_to_xml(self):
-        file_name, _ = QFileDialog.getSaveFileName(self.main_window, "Save File", "", "XML Files (*.xml)")
+    def export_data(self, format_type):
+        file_name, _ = QFileDialog.getSaveFileName(self.main_window, "Save File", "", f"{format_type.upper()} Files (*.{format_type})")
         if file_name:
-            data = self.fetch_data_from_database()
-            self.write_data_to_xml(data, file_name)
-
-    def write_data_to_xml(self, data, filename):
-        root = ET.Element("CarRentalData")
-
-        # Create and append customer elements
-        customers_element = ET.SubElement(root, "Customers")
-        for customer in data['customers']:
-            customer_element = ET.SubElement(customers_element, "Customer")
-            customer_element.set('id', str(customer[0]))
-            ET.SubElement(customer_element, "Name").text = str(customer[1])
-            ET.SubElement(customer_element, "Number").text = str(customer[2])
-            ET.SubElement(customer_element, "Email").text = str(customer[3])
-
-        # Create and append rental elements
-        rentals_element = ET.SubElement(root, "Rentals")
-        for rental in data['rentals']:
-            rental_element = ET.SubElement(rentals_element, "Rental")
-            rental_element.set('id', str(rental[0]))
-            ET.SubElement(rental_element, "CarID").text = str(rental[1])
-            ET.SubElement(rental_element, "CustomerID").text = str(rental[2])
-            ET.SubElement(rental_element, "StartDate").text = str(rental[3])
-
-        # Using a file object to write XML
-        with open(filename, 'wb') as file:  # Note: 'wb' for binary write mode
-            tree = ET.ElementTree(root)
-            tree.write(file, encoding='utf-8', xml_declaration=True)
-
-        QMessageBox.information(self.main_window, "Export Success", f"Data successfully exported as XML to {filename}")
-        print("Data successfully exported to", filename)
-
-    @Slot()
-    def export_data_to_json(self):
-        file_name, _ = QFileDialog.getSaveFileName(self.main_window, "Save File", "", "JSON Files (*.json)")
-        if file_name:
-            data = self.fetch_data_from_database()
-            self.write_data_to_json(data, file_name)
-
-    def write_data_to_json(self, data, filename):
-        # Transforming data into a serializable format
-        json_data = {
-            'cars': [dict(zip(['id', 'registration', 'make', 'year'], car)) for car in data['cars']],
-            'customers': [dict(zip(['id', 'name', 'number', 'email'], customer)) for customer in data['customers']],
-            'rentals': [dict(zip(['id', 'car_id', 'customer_id', 'start_date'], rental)) for rental in data['rentals']]
-        }
-
-        with open(filename, 'w', encoding='utf-8') as file:
-            json.dump(json_data, file, ensure_ascii=False, indent=4)
-
-        QMessageBox.information(self.main_window, "Data successfully exported as JSON to", filename)
-        print("Data successfully exported to", filename)
+            data = self.export_database.fetch_data_from_database()
+            if format_type == 'json':
+                self.export_database.export_data_to_json(data, file_name)
+            elif format_type == 'xml':
+                self.export_database.export_data_to_xml(data, file_name)
+            elif format_type == 'csv':
+                self.export_database.export_data_to_csv(data, file_name)
+            QMessageBox.information(self.main_window, "Export Success", f"Data successfully exported as {format_type.upper()} to {file_name}")
+            print("Data successfully exported to", file_name)
