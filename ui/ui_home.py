@@ -1479,7 +1479,7 @@ class Ui_MainWindow(object):
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(0, 10, 52);\n"
 "background-color: rgb(212, 212, 212);\n"
-"border: 1px solid rgb(0, 10, 52)\n"
+"border: 2px solid rgb(0, 10, 52)\n"
 "}\n"
 "\n"
 "QPushButton{\n"
@@ -1491,7 +1491,7 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "	background-color: rgb(245, 245, 245);\n"
 "	color: rgb(95, 165, 247);\n"
-"	border: 1px solid rgb(0, 10, 52);\n"
+"	border: 2px solid rgb(0, 10, 52);\n"
 "}\n"
 "")
         self.frame_25.setFrameShape(QFrame.StyledPanel)
@@ -1530,7 +1530,7 @@ class Ui_MainWindow(object):
 "font: 600 10pt \"Segoe UI Semibold\";\n"
 "color: rgb(0, 10, 52);\n"
 "background-color: rgb(212, 212, 212);\n"
-"border: 1px solid rgb(0, 10, 52)\n"
+"border: 2px solid rgb(0, 10, 52)\n"
 "\n"
 "\n"
 "}\n"
@@ -1544,7 +1544,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{\n"
 "	background-color: rgb(212, 212, 212);\n"
-"	border: 1px solid rgb(0, 10, 52);\n"
+"	border: 2px solid rgb(0, 10, 52);\n"
 "}\n"
 "")
         self.frame_26.setFrameShape(QFrame.StyledPanel)
@@ -1597,7 +1597,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{\n"
 "	background-color: rgb(212, 212, 212);\n"
-"	border: 1px solid rgb(139, 92, 225);\n"
+"	border: 2px solid rgb(139, 92, 225);\n"
 "}")
         icon12 = QIcon()
         icon12.addFile(u":/icons/json.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1618,7 +1618,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{\n"
 "	background-color: rgb(212, 212, 212);\n"
-"	border: 1px solid rgb(242, 156, 31);\n"
+"	border: 2px solid rgb(242, 156, 31);\n"
 "}")
         icon13 = QIcon()
         icon13.addFile(u":/icons/xml.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1639,7 +1639,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{\n"
 "	background-color: rgb(212, 212, 212);\n"
-"	border: 1px solid  rgb(31, 179, 91);\n"
+"	border: 2px solid  rgb(31, 179, 91);\n"
 "}")
         icon14 = QIcon()
         icon14.addFile(u":/icons/csv.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1659,9 +1659,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages_stack.setCurrentIndex(4)
-        self.car_action_stack.setCurrentIndex(3)
-        self.customer_action_stack.setCurrentIndex(3)
+        self.pages_stack.setCurrentIndex(0)
+        self.car_action_stack.setCurrentIndex(0)
+        self.customer_action_stack.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

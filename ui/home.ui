@@ -2460,7 +2460,7 @@ color: rgb(0, 10, 52);
 font: 600 10pt &quot;Segoe UI Semibold&quot;;
 color: rgb(0, 10, 52);
 background-color: rgb(212, 212, 212);
-border: 1px solid rgb(0, 10, 52)
+border: 2px solid rgb(0, 10, 52)
 }
 
 QPushButton{
@@ -2472,7 +2472,7 @@ background-color: rgb(0, 10, 52);
 QPushButton:hover{
 	background-color: rgb(245, 245, 245);
 	color: rgb(95, 165, 247);
-	border: 1px solid rgb(0, 10, 52);
+	border: 2px solid rgb(0, 10, 52);
 }
 </string>
            </property>
@@ -2536,7 +2536,7 @@ color: rgb(0, 10, 52);
 font: 600 10pt &quot;Segoe UI Semibold&quot;;
 color: rgb(0, 10, 52);
 background-color: rgb(212, 212, 212);
-border: 1px solid rgb(0, 10, 52)
+border: 2px solid rgb(0, 10, 52)
 
 
 }
@@ -2550,7 +2550,7 @@ background-color: rgb(0, 10, 52);
 }
 QPushButton:hover{
 	background-color: rgb(212, 212, 212);
-	border: 1px solid rgb(0, 10, 52);
+	border: 2px solid rgb(0, 10, 52);
 }
 </string>
            </property>
@@ -2652,7 +2652,7 @@ background-color: rgb(139, 92, 225);
 }
 QPushButton:hover{
 	background-color: rgb(212, 212, 212);
-	border: 1px solid rgb(139, 92, 225);
+	border: 2px solid rgb(139, 92, 225);
 }</string>
                  </property>
                  <property name="text">
@@ -2691,7 +2691,7 @@ background-color: rgb(242, 156, 31);
 }
 QPushButton:hover{
 	background-color: rgb(212, 212, 212);
-	border: 1px solid rgb(242, 156, 31);
+	border: 2px solid rgb(242, 156, 31);
 }</string>
                  </property>
                  <property name="text">
@@ -2728,7 +2728,7 @@ background-color: rgb(31, 179, 91);
 }
 QPushButton:hover{
 	background-color: rgb(212, 212, 212);
-	border: 1px solid  rgb(31, 179, 91);
+	border: 2px solid  rgb(31, 179, 91);
 }</string>
                  </property>
                  <property name="text">
