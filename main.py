@@ -9,9 +9,9 @@ from interfaces.search_interface import SearchInterface
 from interfaces.settings_interface import SettingsInterface
 from data_access.database_manager import check_and_initialize
 
-class MyApplication(QMainWindow, Ui_MainWindow):
+class CarRentalApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super(MyApplication, self).__init__()
+        super(CarRentalApp, self).__init__()
         self.setupUi(self)  # Setup UI from the generated UI Python file
         self.setWindowTitle('Car Rental Application')
         self.setWindowIcon(QIcon(':/icons/car-rental.png'))
@@ -36,7 +36,7 @@ class MyApplication(QMainWindow, Ui_MainWindow):
 # The entry point of the application
 if __name__ == '__main__':
     app = QApplication(sys.argv)  # Create the QApplication object
-    mainWin = MyApplication()  # Create the main window object
+    mainWin = CarRentalApp()  # Create the main window object
     mainWin.setFixedSize(mainWin.size()) # Prevent resizing of the main window
     mainWin.show()  # Show the main window
     sys.exit(app.exec())  # Execute the application and exit when closed
