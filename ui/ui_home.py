@@ -175,24 +175,24 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u":/icons/car3.png", QSize(), QIcon.Normal, QIcon.Off)
         self.carsMenu.setIcon(icon)
-        self.carsMenu.setIconSize(QSize(30, 30))
+        self.carsMenu.setIconSize(QSize(28, 28))
         self.customersMenu = QRadioButton(self.icon_widget)
         self.customersMenu.setObjectName(u"customersMenu")
         self.customersMenu.setGeometry(QRect(30, 240, 150, 45))
         self.customersMenu.setCursor(QCursor(Qt.PointingHandCursor))
         self.customersMenu.setStyleSheet(u"")
         icon1 = QIcon()
-        icon1.addFile(u":/icons/customer.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icons/customer (2).png", QSize(), QIcon.Normal, QIcon.Off)
         self.customersMenu.setIcon(icon1)
-        self.customersMenu.setIconSize(QSize(30, 30))
+        self.customersMenu.setIconSize(QSize(20, 20))
         self.rentalMenu = QRadioButton(self.icon_widget)
         self.rentalMenu.setObjectName(u"rentalMenu")
         self.rentalMenu.setGeometry(QRect(30, 310, 150, 45))
         self.rentalMenu.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
-        icon2.addFile(u":/icons/assignment.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/icons/user.png", QSize(), QIcon.Normal, QIcon.Off)
         self.rentalMenu.setIcon(icon2)
-        self.rentalMenu.setIconSize(QSize(22, 22))
+        self.rentalMenu.setIconSize(QSize(25, 25))
         self.searchMenu = QRadioButton(self.icon_widget)
         self.searchMenu.setObjectName(u"searchMenu")
         self.searchMenu.setGeometry(QRect(30, 380, 150, 45))
@@ -409,6 +409,9 @@ class Ui_MainWindow(object):
 "	color: rgb(0, 162, 38);\n"
 "	border: 1px solid rgb(0, 162, 38);\n"
 "}")
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/add(1).png", QSize(), QIcon.Normal, QIcon.Off)
+        self.carAddButton.setIcon(icon5)
 
         self.verticalLayout.addWidget(self.carAddButton)
 
@@ -507,6 +510,9 @@ class Ui_MainWindow(object):
 "	color: rgb(150, 150, 0);\n"
 "	border: 1px solid rgb(153, 153, 0);\n"
 "}")
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/edit.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.carEditButton.setIcon(icon6)
 
         self.verticalLayout_2.addWidget(self.carEditButton)
 
@@ -560,6 +566,9 @@ class Ui_MainWindow(object):
 "	color: rgb(255, 0, 0);\n"
 "	border: 1px solid rgb(255, 0, 0);\n"
 "}")
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/garbage-bin.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.carRemoveButton.setIcon(icon7)
 
         self.verticalLayout_3.addWidget(self.carRemoveButton)
 
@@ -795,6 +804,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.customerAddButton.sizePolicy().hasHeightForWidth())
         self.customerAddButton.setSizePolicy(sizePolicy)
         self.customerAddButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.customerAddButton.setLayoutDirection(Qt.LeftToRight)
         self.customerAddButton.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(95, 165, 247);\n"
 "font: 600 10pt \"Segoe UI Semibold\";\n"
@@ -806,6 +816,8 @@ class Ui_MainWindow(object):
 "	color: rgb(0, 162, 38);\n"
 "	border: 1px solid rgb(0, 162, 38);\n"
 "}")
+        self.customerAddButton.setIcon(icon5)
+        self.customerAddButton.setIconSize(QSize(16, 16))
 
         self.verticalLayout_5.addWidget(self.customerAddButton)
 
@@ -890,6 +902,7 @@ class Ui_MainWindow(object):
 "	border: 1px solid rgb(153, 153, 0);\n"
 "}\n"
 "")
+        self.customerEditButton.setIcon(icon6)
 
         self.verticalLayout_6.addWidget(self.customerEditButton)
 
@@ -939,6 +952,7 @@ class Ui_MainWindow(object):
 "	color: rgb(255, 0, 0);\n"
 "	border: 1px solid rgb(255, 0, 0);\n"
 "}")
+        self.customerRemoveButton.setIcon(icon7)
 
         self.verticalLayout_7.addWidget(self.customerRemoveButton)
 
@@ -1168,6 +1182,8 @@ class Ui_MainWindow(object):
 "	color: rgb(0, 162, 38);\n"
 "	border: 1px solid rgb(0, 162, 38);\n"
 "}")
+        self.rentalStartButton.setIcon(icon2)
+        self.rentalStartButton.setIconSize(QSize(22, 22))
 
         self.verticalLayout_8.addWidget(self.rentalStartButton)
 
@@ -1219,6 +1235,10 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/remove-user.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.rentalEndButton.setIcon(icon8)
+        self.rentalEndButton.setIconSize(QSize(22, 22))
 
         self.verticalLayout_9.addWidget(self.rentalEndButton)
 
@@ -1297,9 +1317,9 @@ class Ui_MainWindow(object):
 "	color: rgb(95, 165, 247);\n"
 "	border: 1px solid rgb(95, 165, 247);\n"
 "}")
-        icon5 = QIcon()
-        icon5.addFile(u":/icons/search (2).png", QSize(), QIcon.Normal, QIcon.Off)
-        self.searchCarButton.setIcon(icon5)
+        icon9 = QIcon()
+        icon9.addFile(u":/icons/search (2).png", QSize(), QIcon.Normal, QIcon.Off)
+        self.searchCarButton.setIcon(icon9)
         self.searchCarButton.setIconSize(QSize(22, 22))
 
         self.verticalLayout_10.addWidget(self.searchCarButton)
@@ -1366,21 +1386,21 @@ class Ui_MainWindow(object):
 "	color: rgb(95, 165, 247);\n"
 "	border: 1px solid rgb(95, 165, 247);\n"
 "}")
-        self.searchCustomerButton.setIcon(icon5)
+        self.searchCustomerButton.setIcon(icon9)
         self.searchCustomerButton.setIconSize(QSize(22, 22))
 
         self.verticalLayout_11.addWidget(self.searchCustomerButton)
 
         self.carsList = QListWidget(self.frame_19)
         self.carsList.setObjectName(u"carsList")
-        self.carsList.setGeometry(QRect(100, 140, 491, 70))
+        self.carsList.setGeometry(QRect(60, 140, 561, 50))
         self.carsList.setStyleSheet(u"background-color: rgb(180, 180, 180);\n"
 "border-radius: 9px;\n"
 "font: 10pt \"Segoe UI\";\n"
 "color:rgb(0, 10, 52);")
         self.customerList = QListWidget(self.frame_19)
         self.customerList.setObjectName(u"customerList")
-        self.customerList.setGeometry(QRect(100, 430, 511, 100))
+        self.customerList.setGeometry(QRect(60, 430, 561, 100))
         self.customerList.setStyleSheet(u"background-color: rgb(180, 180, 180);\n"
 "border-radius: 9px;\n"
 "font: 10pt \"Segoe UI\";\n"
@@ -1388,6 +1408,42 @@ class Ui_MainWindow(object):
         self.customerList.setLineWidth(1)
         self.customerList.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.customerList.setAlternatingRowColors(False)
+        self.label_30 = QLabel(self.frame_19)
+        self.label_30.setObjectName(u"label_30")
+        self.label_30.setGeometry(QRect(60, 80, 91, 41))
+        self.label_30.setStyleSheet(u"\n"
+"font: 600 11pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+" border: 0px solid rgb(157, 157, 157) ; \n"
+"")
+        self.label_34 = QLabel(self.frame_19)
+        self.label_34.setObjectName(u"label_34")
+        self.label_34.setGeometry(QRect(60, 370, 131, 41))
+        self.label_34.setStyleSheet(u"\n"
+"font: 600 11pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+" border: 0px solid rgb(157, 157, 157) ; \n"
+"")
+        self.label_35 = QLabel(self.frame_19)
+        self.label_35.setObjectName(u"label_35")
+        self.label_35.setGeometry(QRect(620, 410, 22, 22))
+        self.label_35.setStyleSheet(u"\n"
+"font: 600 11pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+" border: 0px solid rgb(157, 157, 157) ; \n"
+"")
+        self.label_35.setPixmap(QPixmap(u":/icons/info.png"))
+        self.label_35.setScaledContents(True)
+        self.label_36 = QLabel(self.frame_19)
+        self.label_36.setObjectName(u"label_36")
+        self.label_36.setGeometry(QRect(620, 120, 22, 22))
+        self.label_36.setStyleSheet(u"\n"
+"font: 600 11pt \"Segoe UI Semibold\";\n"
+"color: rgb(0, 10, 52);\n"
+" border: 0px solid rgb(157, 157, 157) ; \n"
+"")
+        self.label_36.setPixmap(QPixmap(u":/icons/info.png"))
+        self.label_36.setScaledContents(True)
         self.pages_stack.addWidget(self.search_page)
         self.settings_page = QWidget()
         self.settings_page.setObjectName(u"settings_page")
@@ -1458,9 +1514,9 @@ class Ui_MainWindow(object):
         self.importButton.setSizePolicy(sizePolicy)
         self.importButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.importButton.setStyleSheet(u"")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/import.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.importButton.setIcon(icon6)
+        icon10 = QIcon()
+        icon10.addFile(u":/icons/import.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.importButton.setIcon(icon10)
         self.importButton.setIconSize(QSize(45, 45))
 
         self.verticalLayout_12.addWidget(self.importButton)
@@ -1511,9 +1567,9 @@ class Ui_MainWindow(object):
         self.exportButton.setSizePolicy(sizePolicy)
         self.exportButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.exportButton.setStyleSheet(u"")
-        icon7 = QIcon()
-        icon7.addFile(u":/icons/export.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.exportButton.setIcon(icon7)
+        icon11 = QIcon()
+        icon11.addFile(u":/icons/export.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exportButton.setIcon(icon11)
         self.exportButton.setIconSize(QSize(45, 45))
 
         self.verticalLayout_13.addWidget(self.exportButton)
@@ -1543,9 +1599,9 @@ class Ui_MainWindow(object):
 "	background-color: rgb(212, 212, 212);\n"
 "	border: 1px solid rgb(139, 92, 225);\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/json.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.exportJson.setIcon(icon8)
+        icon12 = QIcon()
+        icon12.addFile(u":/icons/json.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exportJson.setIcon(icon12)
         self.exportJson.setIconSize(QSize(45, 45))
         self.exportJson.setAutoDefault(False)
 
@@ -1564,9 +1620,9 @@ class Ui_MainWindow(object):
 "	background-color: rgb(212, 212, 212);\n"
 "	border: 1px solid rgb(242, 156, 31);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/icons/xml.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.exportXml.setIcon(icon9)
+        icon13 = QIcon()
+        icon13.addFile(u":/icons/xml.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exportXml.setIcon(icon13)
         self.exportXml.setIconSize(QSize(45, 45))
 
         self.horizontalLayout.addWidget(self.exportXml)
@@ -1585,9 +1641,9 @@ class Ui_MainWindow(object):
 "	background-color: rgb(212, 212, 212);\n"
 "	border: 1px solid  rgb(31, 179, 91);\n"
 "}")
-        icon10 = QIcon()
-        icon10.addFile(u":/icons/csv.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.exportCsv.setIcon(icon10)
+        icon14 = QIcon()
+        icon14.addFile(u":/icons/csv.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exportCsv.setIcon(icon14)
         self.exportCsv.setIconSize(QSize(45, 45))
 
         self.horizontalLayout.addWidget(self.exportCsv)
@@ -1603,9 +1659,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages_stack.setCurrentIndex(0)
+        self.pages_stack.setCurrentIndex(4)
         self.car_action_stack.setCurrentIndex(3)
-        self.customer_action_stack.setCurrentIndex(2)
+        self.customer_action_stack.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1686,6 +1742,10 @@ class Ui_MainWindow(object):
         self.label_31.setText(QCoreApplication.translate("MainWindow", u"Search Customer", None))
         self.label_28.setText(QCoreApplication.translate("MainWindow", u"Customer Mobile Number", None))
         self.searchCustomerButton.setText(QCoreApplication.translate("MainWindow", u"Search Customer", None))
+        self.label_30.setText(QCoreApplication.translate("MainWindow", u"Car Details", None))
+        self.label_34.setText(QCoreApplication.translate("MainWindow", u"Customer Details", None))
+        self.label_35.setText("")
+        self.label_36.setText("")
         self.label_32.setText(QCoreApplication.translate("MainWindow", u"IMPORT", None))
         self.importButton.setText("")
         self.label_33.setText(QCoreApplication.translate("MainWindow", u"EXPORT", None))

@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QButtonGroup, QTableWidgetItem, QMessageBox
+from PySide6.QtWidgets import QButtonGroup, QTableWidgetItem, QMessageBox,QApplication
 from data_access.cars_database import CarDatabase  # Importing the car database access class
 
 class CarInterface:
@@ -9,6 +9,13 @@ class CarInterface:
         self.main_window.carsMenu.toggle()  # Automatically toggles the visibility of the cars menu
         self.main_window.updateTable = self.update_table  # Linking the update table method to the UI
         self.main_window.car_action_stack.setCurrentIndex(0)  # Setting the initial view to the first page of the car actions
+        self.main_window.carTable.cellClicked.connect(self.copy_item_to_clipboard)   # Connecting the cellClicked signal to the copy_text_to_clipboard method
+
+        # Allowing only uppercase input for car registration and make fields
+        self.connect_uppercase(self.main_window.carRegNumber)
+        self.connect_uppercase(self.main_window.carMake)
+        self.connect_uppercase(self.main_window.carEditRegNumber)
+        self.connect_uppercase(self.main_window.carEditMake)
 
         # Connecting UI elements to their respective methods
         self.main_window.carsMenu.clicked.connect(self.displayCarsPage)
@@ -31,6 +38,9 @@ class CarInterface:
         self.main_window.pages_stack.setCurrentIndex(0)
         self.main_window.page_name_label.setText("Car Rental - Cars Page")
 
+    def connect_uppercase(self, line_edit):
+        line_edit.textChanged.connect(lambda text, le=line_edit: le.setText(text.upper()))
+
     def handleCarRadioToggle(self, button, checked):
         # Handles the toggling between different car management options (add, edit, delete)
         if checked:
@@ -41,6 +51,13 @@ class CarInterface:
             }.get(button, 0)
             self.main_window.car_action_stack.setCurrentIndex(index)
             self.main_window.page_name_label.setText(f"Car Rental - Cars - {button.text()}")
+
+    def copy_item_to_clipboard(self, row, column):
+        item = self.main_window.carTable.item(row, column)
+        if item and item.text():
+            clipboard = QApplication.clipboard()
+            clipboard.setText(item.text())
+            print(f"Copied '{item.text()}' to clipboard.")  # Optional: for debugging
 
     def add_car(self):
         # Adds a new car to the database

@@ -1,6 +1,7 @@
 import sys
 from ui.ui_home import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtGui import QIcon
 from interfaces.car_interface import CarInterface
 from interfaces.customer_interface import CustomerInterface
 from interfaces.rental_interface import RentalInterface
@@ -12,7 +13,8 @@ class MyApplication(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MyApplication, self).__init__()
         self.setupUi(self)  # Setup UI from the generated UI Python file
-
+        self.setWindowTitle('Car Rental Application')
+        self.setWindowIcon(QIcon(':/icons/car-rental.png'))
         # Check and initialize the database to ensure all necessary tables are present
         check_and_initialize()
 
@@ -24,6 +26,12 @@ class MyApplication(QMainWindow, Ui_MainWindow):
         self.settings_interface = SettingsInterface(self)
 
         self.pages_stack.setCurrentIndex(0)  # Set the default page to be displayed at startup
+
+    def update_all_tables(self):
+        """ Update all tables in the application. """
+        self.car_interface.update_table()
+        self.customer_interface.update_table()
+        self.rental_interface.update_table()
 
 # The entry point of the application
 if __name__ == '__main__':

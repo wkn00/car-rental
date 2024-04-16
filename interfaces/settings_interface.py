@@ -40,10 +40,16 @@ class SettingsInterface:
         if file_name:
             if file_name.endswith('.json'):
                 self.import_database.import_from_json(file_name)
+                self.main_window.update_all_tables()  # Update UI tables after import
+                QMessageBox.information(self.main_window, "JSON Imported", "JSON file has been successfully imported.")
             elif file_name.endswith('.csv'):
                 self.import_database.import_from_csv(file_name)
+                self.main_window.update_all_tables()  # Update UI tables after import
+                QMessageBox.information(self.main_window, "CSV Imported", "CSV file has been successfully imported.")
             elif file_name.endswith('.xml'):
                 self.import_database.import_from_xml(file_name)
+                self.main_window.update_all_tables()  # Update UI tables after import
+                QMessageBox.information(self.main_window, "XML Imported", "XML file has been successfully imported.")
             else:
                 QMessageBox.warning(self.main_window, "Unsupported File", "The selected file format is not supported.")
             self.main_window.updateTable()  # Update UI tables after import

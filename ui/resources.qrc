@@ -2,18 +2,21 @@
   <qresource>
     <file>icons/car-logo-small.png</file>
     <file>icons/csv.png</file>
-    <file>icons/document(1).png</file>
-    <file>icons/document.png</file>
-    <file>icons/json.png</file>
-    <file>icons/search (2).png</file>
-    <file>icons/xml.png</file>
-    <file>icons/car-rental.png</file>
     <file>icons/car3.png</file>
-    <file>icons/assignment.png</file>
-    <file>icons/setting.png</file>
-    <file>icons/customer.png</file>
+    <file>icons/add(1).png</file>
+    <file>icons/car-rental.png</file>
+    <file>icons/customer (2).png</file>
+    <file>icons/edit.png</file>
     <file>icons/export.png</file>
+    <file>icons/garbage-bin.png</file>
     <file>icons/import.png</file>
+    <file>icons/info.png</file>
+    <file>icons/json.png</file>
+    <file>icons/remove-user.png</file>
+    <file>icons/search (2).png</file>
     <file>icons/search.png</file>
+    <file>icons/setting.png</file>
+    <file>icons/user.png</file>
+    <file>icons/xml.png</file>
   </qresource>
 </RCC>

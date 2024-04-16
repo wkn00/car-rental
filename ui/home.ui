@@ -209,8 +209,8 @@ QRadioButton:checked {
      </property>
      <property name="iconSize">
       <size>
-       <width>30</width>
-       <height>30</height>
+       <width>28</width>
+       <height>28</height>
       </size>
      </property>
     </widget>
@@ -234,12 +234,12 @@ QRadioButton:checked {
      </property>
      <property name="icon">
       <iconset resource="resources.qrc">
-       <normaloff>:/icons/customer.png</normaloff>:/icons/customer.png</iconset>
+       <normaloff>:/icons/customer (2).png</normaloff>:/icons/customer (2).png</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>30</width>
-       <height>30</height>
+       <width>20</width>
+       <height>20</height>
       </size>
      </property>
     </widget>
@@ -260,12 +260,12 @@ QRadioButton:checked {
      </property>
      <property name="icon">
       <iconset resource="resources.qrc">
-       <normaloff>:/icons/assignment.png</normaloff>:/icons/assignment.png</iconset>
+       <normaloff>:/icons/user.png</normaloff>:/icons/user.png</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>22</width>
-       <height>22</height>
+       <width>25</width>
+       <height>25</height>
       </size>
      </property>
     </widget>
@@ -535,7 +535,7 @@ border-radius: 7px;</string>
           </rect>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="car_empty"/>
          <widget class="QWidget" name="add_car">
@@ -638,6 +638,10 @@ QPushButton:hover{
               </property>
               <property name="text">
                <string>Add Car</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/icons/add(1).png</normaloff>:/icons/add(1).png</iconset>
               </property>
              </widget>
             </item>
@@ -783,6 +787,10 @@ QPushButton:hover{
               <property name="text">
                <string>Edit Car</string>
               </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
+              </property>
              </widget>
             </item>
            </layout>
@@ -864,6 +872,10 @@ QPushButton:hover{
               </property>
               <property name="text">
                <string>Remove Car</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/icons/garbage-bin.png</normaloff>:/icons/garbage-bin.png</iconset>
               </property>
              </widget>
             </item>
@@ -1161,7 +1173,7 @@ border-radius: 7px;</string>
           </rect>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="customer_empty"/>
          <widget class="QWidget" name="add_customer">
@@ -1238,6 +1250,9 @@ color: rgb(0, 10, 52);
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton{
 background-color: rgb(95, 165, 247);
@@ -1253,6 +1268,16 @@ QPushButton:hover{
               </property>
               <property name="text">
                <string>Add Customer</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/icons/add(1).png</normaloff>:/icons/add(1).png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
               </property>
              </widget>
             </item>
@@ -1384,6 +1409,10 @@ QPushButton:hover{
               <property name="text">
                <string>Edit Customer</string>
               </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
+              </property>
              </widget>
             </item>
            </layout>
@@ -1463,6 +1492,10 @@ QPushButton:hover{
               </property>
               <property name="text">
                <string>Remove Customer</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/icons/garbage-bin.png</normaloff>:/icons/garbage-bin.png</iconset>
               </property>
              </widget>
             </item>
@@ -1845,6 +1878,16 @@ QPushButton:hover{
             <property name="text">
              <string>Assign Car</string>
             </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/user.png</normaloff>:/icons/user.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
            </widget>
           </item>
          </layout>
@@ -1928,6 +1971,16 @@ QPushButton:hover{
             </property>
             <property name="text">
              <string>Unassign Car</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/remove-user.png</normaloff>:/icons/remove-user.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -2218,10 +2271,10 @@ QPushButton:hover{
        <widget class="QListWidget" name="carsList">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>60</x>
           <y>140</y>
-          <width>491</width>
-          <height>70</height>
+          <width>561</width>
+          <height>50</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2234,9 +2287,9 @@ color:rgb(0, 10, 52);</string>
        <widget class="QListWidget" name="customerList">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>60</x>
           <y>430</y>
-          <width>511</width>
+          <width>561</width>
           <height>100</height>
          </rect>
         </property>
@@ -2254,6 +2307,98 @@ color:rgb(0, 10, 52);</string>
         </property>
         <property name="alternatingRowColors">
          <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>80</y>
+          <width>91</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+font: 600 11pt &quot;Segoe UI Semibold&quot;;
+color: rgb(0, 10, 52);
+ border: 0px solid rgb(157, 157, 157) ; 
+</string>
+        </property>
+        <property name="text">
+         <string>Car Details</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_34">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>370</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+font: 600 11pt &quot;Segoe UI Semibold&quot;;
+color: rgb(0, 10, 52);
+ border: 0px solid rgb(157, 157, 157) ; 
+</string>
+        </property>
+        <property name="text">
+         <string>Customer Details</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_35">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>410</y>
+          <width>22</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+font: 600 11pt &quot;Segoe UI Semibold&quot;;
+color: rgb(0, 10, 52);
+ border: 0px solid rgb(157, 157, 157) ; 
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/icons/info.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_36">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>120</y>
+          <width>22</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+font: 600 11pt &quot;Segoe UI Semibold&quot;;
+color: rgb(0, 10, 52);
+ border: 0px solid rgb(157, 157, 157) ; 
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/icons/info.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>

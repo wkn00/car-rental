@@ -44,11 +44,11 @@ class ExportDatabase:
         # Create and append customer elements
         cars_element = ET.SubElement(root, "Cars")
         for car in data['cars']:
-            cars_element = ET.SubElement(customers_element, "Car")
-            cars_element.set('car_id', str(car[0]))
-            ET.SubElement(cars_element, "car_reg").text = str(car[1])
-            ET.SubElement(cars_element, "car_make").text = str(car[2])
-            ET.SubElement(cars_element, "car_year").text = str(car[3])
+            car_element = ET.SubElement(cars_element, "Car")
+            car_element.set('car_id', str(car[0]))
+            ET.SubElement(car_element, "car_reg").text = str(car[1])
+            ET.SubElement(car_element, "car_make").text = str(car[2])
+            ET.SubElement(car_element, "car_year").text = str(car[3])
 
         # Create and append customer elements
         customers_element = ET.SubElement(root, "Customers")
