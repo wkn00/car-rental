@@ -14,7 +14,7 @@ class CarRentalApp(QMainWindow, Ui_MainWindow):
         super(CarRentalApp, self).__init__()
         self.setupUi(self)  # Setup UI from the generated UI Python file
         self.setWindowTitle('Car Rental Application')
-        self.setWindowIcon(QIcon(':/icons/car-rental.png'))
+        self.setWindowIcon(QIcon(':/icons/icoon.ico'))
         # Check and initialize the database to ensure all necessary tables are present
         check_and_initialize()
 

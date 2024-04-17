@@ -535,7 +535,7 @@ border-radius: 7px;</string>
           </rect>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="car_empty"/>
          <widget class="QWidget" name="add_car">
@@ -596,7 +596,11 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="carMake"/>
+             <widget class="QLineEdit" name="carMake">
+              <property name="maxLength">
+               <number>15</number>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_6">
@@ -704,7 +708,11 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="carEditCarID"/>
+             <widget class="QLineEdit" name="carEditCarID">
+              <property name="maxLength">
+               <number>8</number>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_3">
@@ -717,7 +725,7 @@ color: rgb(0, 10, 52);
                </font>
               </property>
               <property name="text">
-               <string>New Registration Nulmber</string>
+               <string>New Registration Number</string>
               </property>
              </widget>
             </item>
@@ -725,6 +733,9 @@ color: rgb(0, 10, 52);
              <widget class="QLineEdit" name="carEditRegNumber">
               <property name="maxLength">
                <number>7</number>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -744,7 +755,14 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="carEditMake"/>
+             <widget class="QLineEdit" name="carEditMake">
+              <property name="maxLength">
+               <number>15</number>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_8">
@@ -757,6 +775,9 @@ color: rgb(0, 10, 52);
              <widget class="QLineEdit" name="carEditYear">
               <property name="maxLength">
                <number>4</number>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -1213,7 +1234,11 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="customerName"/>
+             <widget class="QLineEdit" name="customerName">
+              <property name="clearButtonEnabled">
+               <bool>false</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_13">
@@ -1226,6 +1251,9 @@ color: rgb(0, 10, 52);
              <widget class="QLineEdit" name="customerNumber">
               <property name="maxLength">
                <number>8</number>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -1347,7 +1375,11 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="customerEditName"/>
+             <widget class="QLineEdit" name="customerEditName">
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_18">
@@ -1369,6 +1401,9 @@ color: rgb(0, 10, 52);
               <property name="maxLength">
                <number>8</number>
               </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -1379,7 +1414,11 @@ color: rgb(0, 10, 52);
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="customerEditEmail"/>
+             <widget class="QLineEdit" name="customerEditEmail">
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QPushButton" name="customerEditButton">
@@ -1839,7 +1878,11 @@ color: rgb(0, 10, 52);
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="rentalCarID"/>
+           <widget class="QLineEdit" name="rentalCarID">
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_23">
@@ -1849,7 +1892,11 @@ color: rgb(0, 10, 52);
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="rentalCustomerID"/>
+           <widget class="QLineEdit" name="rentalCustomerID">
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="rentalStartButton">
@@ -1941,7 +1988,11 @@ color: rgb(0, 10, 52);
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="rentalRentalID"/>
+           <widget class="QLineEdit" name="rentalRentalID">
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="rentalEndButton">
@@ -2098,6 +2149,9 @@ color: rgb(0, 10, 52);
             <property name="maxLength">
              <number>7</number>
             </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
@@ -2221,8 +2275,14 @@ color: rgb(0, 10, 52);
           </item>
           <item>
            <widget class="QLineEdit" name="searchCustomer">
+            <property name="text">
+             <string notr="true"/>
+            </property>
             <property name="maxLength">
              <number>8</number>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -2271,9 +2331,9 @@ QPushButton:hover{
        <widget class="QListWidget" name="carsList">
         <property name="geometry">
          <rect>
-          <x>60</x>
+          <x>50</x>
           <y>140</y>
-          <width>561</width>
+          <width>581</width>
           <height>50</height>
          </rect>
         </property>
@@ -2287,9 +2347,9 @@ color:rgb(0, 10, 52);</string>
        <widget class="QListWidget" name="customerList">
         <property name="geometry">
          <rect>
-          <x>60</x>
+          <x>50</x>
           <y>430</y>
-          <width>561</width>
+          <width>581</width>
           <height>100</height>
          </rect>
         </property>
@@ -2352,7 +2412,7 @@ color: rgb(0, 10, 52);
        <widget class="QLabel" name="label_35">
         <property name="geometry">
          <rect>
-          <x>620</x>
+          <x>630</x>
           <y>410</y>
           <width>22</width>
           <height>22</height>
@@ -2378,7 +2438,7 @@ color: rgb(0, 10, 52);
        <widget class="QLabel" name="label_36">
         <property name="geometry">
          <rect>
-          <x>620</x>
+          <x>630</x>
           <y>120</y>
           <width>22</width>
           <height>22</height>

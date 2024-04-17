@@ -13,11 +13,15 @@ class SearchInterface:
         self.main_window.searchMenu.clicked.connect(self.displaySearchPage)
         self.main_window.searchCarButton.clicked.connect(self.search_car)
         self.main_window.searchCustomerButton.clicked.connect(self.search_customer)
+        self.connect_uppercase(self.main_window.searchCar)
 
     def displaySearchPage(self):
         # Display the search page and update the page label
         self.main_window.pages_stack.setCurrentIndex(3)
         self.main_window.page_name_label.setText("Car Rental - Search Page")
+
+    def connect_uppercase(self, line_edit):
+        line_edit.textChanged.connect(lambda text, le=line_edit: le.setText(text.upper()))
 
     def search_car(self):
         # Retrieves cars from the database based on registration number and updates the list widget

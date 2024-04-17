@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QButtonGroup, QMessageBox, QTableWidgetItem
+from PySide6.QtWidgets import QButtonGroup, QMessageBox, QTableWidgetItem, QApplication
 from data_access.customers_database import CustomerDatabase  # Importing the customer database access class
 
 class CustomerInterface:
@@ -8,6 +8,7 @@ class CustomerInterface:
 
         self.main_window.updateTable = self.update_table  # Linking the update table method to the UI
         self.main_window.customersMenu.clicked.connect(self.displayCustomersPage)
+        self.main_window.customerTable.cellClicked.connect(self.copy_item_to_clipboard)   # Connecting the cellClicked signal to the copy_text_to_clipboard method
 
         self.main_window.customer_action_stack.setCurrentIndex(0)  # Setting the initial view to the first page of the customer actions
         self.main_window.customerRadioGroup = QButtonGroup(self.main_window)  # Grouping radio buttons for customer actions
@@ -42,6 +43,13 @@ class CustomerInterface:
             }.get(button, 0)
             self.main_window.customer_action_stack.setCurrentIndex(index)
             self.main_window.page_name_label.setText(f"Car Rental - Customers - {button.text()}")
+
+    def copy_item_to_clipboard(self, row, column):
+        item = self.main_window.customerTable.item(row, column)
+        if item and item.text():
+            clipboard = QApplication.clipboard()
+            clipboard.setText(item.text())
+            print(f"Copied '{item.text()}' to clipboard.")  # Optional: for debugging
 
     def add_customer(self):
         # Adds a new customer to the database

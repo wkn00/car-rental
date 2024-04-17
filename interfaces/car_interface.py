@@ -114,4 +114,4 @@ class CarInterface:
         for row_index, row_data in enumerate(rows):
             for column_index, column_data in enumerate(row_data):
                 self.main_window.carTable.setItem(row_index, column_index, QTableWidgetItem(str(column_data)))
-        self.main_window.carTable.verticalHeader().setVisible(False)
+        self.main_window.carTable.verticalHeader().setVisible(False) # Hide the vertical header

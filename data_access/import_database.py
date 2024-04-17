@@ -84,7 +84,6 @@ class ImportDatabase:
                 print(f"An error occurred: {e}")
                 conn.rollback()
 
-
     def import_from_csv(self, filename):
         """ Imports data from a CSV file into the database. Handles different data sections based on headers. """
         with sqlite3.connect(DATABASE_FILE) as conn:
